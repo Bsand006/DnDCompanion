@@ -2,23 +2,15 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:8080';
 
-export const getMessages = async () => {
+export const getSpells = async (query) => {
 	try {
-		const response = await axios.get(`${API_URL}/hello`);
-		console.log(response.data)
-		return response.data;
-	} catch (error) {
-		console.error('Error fetching messages:', error);
-		throw error;
-	}
-};
+        const response = await axios.get(`${API_URL}/api/spells`, {
+            params: { query },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching spells:', error);
+        throw error;
+    }
+}
 
-export const saveMessage = async (content) => {
-	try {
-		const response = await axios.post(`${API_URL}/hello`, { content });
-		return response.data;
-	} catch (error) {
-		console.error('Error saving message:', error);
-		throw error;
-	}
-};

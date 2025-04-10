@@ -2,11 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 import './Compendium.css';
-import MessageComponent from './components/messageComponent';
 import SpellLookupBook from './SpellLookupBook';
 
 function Home() {
-
 	const navigate = useNavigate();
 
 	const handleNavigate = (path) => {
@@ -18,7 +16,6 @@ function Home() {
 		<div className="App">
 			<header className="App-header">
 				<h1>D&D Companion</h1>
-				<MessageComponent />
 				<text />
 				<p>
 					The best companion app for d&d 5e
