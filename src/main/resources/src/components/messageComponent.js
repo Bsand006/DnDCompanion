@@ -17,13 +17,11 @@ const MessageComponent = () => {
 		}
 	};
 
-
 	return (
 		<div>
-
 			{messages}
-
 		</div>
 	);
 };
+
 export default MessageComponent;

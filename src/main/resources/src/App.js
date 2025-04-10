@@ -1,12 +1,17 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
+import './Compendium.css';
 import MessageComponent from './components/messageComponent';
+import SpellLookupBook from './SpellLookupBook';
 
-function App() {
+function Home() {
 
-	const handleClick = () => {
+	const navigate = useNavigate();
 
-	};
+	const handleNavigate = (path) => {
+		navigate(path);
+	}
 
 	return (
 
@@ -19,9 +24,11 @@ function App() {
 					The best companion app for d&d 5e
 				</p>
 
-				<button type="button" onClick={handleClick}>
-					Create Sheet
-				</button>
+				<div className="button-row">
+					<button type="button" onClick={() => handleNavigate('/create-sheet')}>Create sheet</button>
+					<button type="button" onClick={() => handleNavigate('/open-sheet')}>Open sheet</button>
+					<button type="button" onClick={() => handleNavigate('/compendium')}>Compendium</button>
+				</div>
 
 				<a
 					className="App-link"
@@ -32,6 +39,52 @@ function App() {
 				</a>
 			</header>
 		</div>
+	);
+};
+
+function CreateSheet() {
+	return <h2>Create Sheet Page</h2>;
+}
+
+function OpenSheet() {
+	return <h2>Open Sheet Page</h2>;
+}
+
+function Compendium() {
+
+	const navigate = useNavigate();
+
+	const handleNavigate = (path) => {
+		navigate(path);
+	};
+
+	return (
+		<div className="Compendium">
+			<header className="Compendium-header">
+				<h1>Compendium</h1>
+				<p>
+					A lookup book for all your D&D needs
+				</p>
+				<div className="button-row">
+					<button type="button" onClick={() => handleNavigate('/compendium/spells')}>Spell Lookup Book</button>
+				</div>
+			</header>
+		</div>
+
+	);
+}
+
+function App() {
+	return (
+		<Router>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/create-sheet" element={<CreateSheet />} />
+				<Route path="/open-sheet" element={<OpenSheet />} />
+				<Route path="/compendium" element={<Compendium />} />
+				<Route path="/compendium/spells" element={<SpellLookupBook />} />
+			</Routes>
+		</Router>
 	);
 }
 
