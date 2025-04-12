@@ -4,6 +4,7 @@ import './App.css';
 import './Compendium.css';
 import SpellLookupBook from './SpellLookupBook';
 
+
 function Home() {
 	const navigate = useNavigate();
 
