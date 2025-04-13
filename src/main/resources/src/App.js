@@ -5,7 +5,7 @@ import './Compendium.css';
 import SpellLookupBook from './SpellLookupBook';
 
 
-function Home() {
+function App() {
 	const navigate = useNavigate();
 
 	const handleNavigate = (path) => {
@@ -69,20 +69,6 @@ function Compendium() {
 			</header>
 		</div>
 
-	);
-}
-
-function App() {
-	return (
-		<Router>
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/create-sheet" element={<CreateSheet />} />
-				<Route path="/open-sheet" element={<OpenSheet />} />
-				<Route path="/compendium" element={<Compendium />} />
-				<Route path="/compendium/spells" element={<SpellLookupBook />} />
-			</Routes>
-		</Router>
 	);
 }
 
