@@ -4,7 +4,7 @@ import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
 import App from './App';
-import Compendium from './App';
+import Compendium from './Compendium';
 import SpellLookupBook from './SpellLookupBook';
 
 
@@ -16,8 +16,8 @@ function AppRouter() {
 				<Route path="/login" element={<Login />} />
 				<Route path="/signup" element={<Signup />} />
 				<Route path="/home" element={<App />} />
-				<Route path="/home/compendium" element={<Compendium />} />
-				<Route path="/home/compendium/spells" element={<SpellLookupBook />} />
+				<Route path="compendium" element={<Compendium />} />
+				<Route path="compendium/spells" element={<SpellLookupBook />} />
 			</Routes>
 		</Router>
 	);

@@ -24,13 +24,12 @@
 }
 
 .Login button {
-	width: 40%;
+	width: 100%;
 	max-width: 300px;
 	padding: 10px;
 	margin: 10px 0;
 	background-color: #007bff;
-	color: white;
-	border: none;
+	color: black;
 	border-radius: 5px;
 	font-size: 16px;
 	cursor: pointer;

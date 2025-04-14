@@ -3,9 +3,10 @@ package com.bsand.dndcompanion;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 
 import com.bsand.dndcompanion.data.ParseSpells;
 
@@ -31,4 +32,18 @@ public class Controller {
 		ParseSpells parseSpells = new ParseSpells();
 		return parseSpells.getSpell(query);
 	}
+	
+	@GetMapping("/me")
+    public ResponseEntity<?> currentUser(Authentication auth) {
+        if (auth == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok(auth.getName());
+    }
+
+    @GetMapping("/data")
+    public ResponseEntity<String> secureData() {
+        return ResponseEntity.ok("This is secured data.");
+    }
+
 }

@@ -12,7 +12,7 @@ function Signup() {
 	return (
 		<div className="Signup">
 			<header className="Signup-header">
-				<h1>Login</h1>
+				<h1>Sign Up</h1>
 				<div>
 					<input
 						type="text"
