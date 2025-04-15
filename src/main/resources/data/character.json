@@ -1,0 +1,74 @@
+{
+  "Name": "name",
+  "Level": 1,
+  "Race": "race",
+  "Class": "Fighter",
+  "Subclass": "Battle master",
+  "Description": [
+    {
+      "height": "5''2'",
+      "weight": "50kg"
+      "skin tone": "white",
+      "eye color": "hazel",
+      "hair color": "brown",
+      "other description": "description"
+    }
+  ],
+
+  "xp": 500,
+  "Background": "Charlatan",
+  
+
+  "stats": [
+    "strength": 18,
+    "dexterity": 14,
+    "constitution": 17,
+    "intelligence": 13,
+    "wisdom": 11,
+    "charisma": 9
+  ],
+
+  "AC": 17,
+  "Speed": 30,
+  "Initiative": 1,
+  "Passive perception": 13,
+  "HP": 50,
+  "Hit dice": "1d10",
+  "Temp HP": 0,
+
+  "Profiecencies": [
+    "saving throws": {
+      "strength": 6,
+      "constitution": 6
+    },
+    "skills": {
+      "athletics": 6,
+      "acrobatics": 6,
+      "investigation": 6
+    },
+    "tools": {
+      "cooks utensils": true
+    }
+  ],
+  "Abilities": {
+    "racial": [
+
+    ],
+    "class": [
+
+    ],
+    "subclass": [
+
+    ]
+
+  },
+  "equipment":
+    "equipped": [
+
+    ],
+    "carried": [
+
+    ]
+  
+
+}
