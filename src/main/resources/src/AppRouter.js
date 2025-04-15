@@ -15,7 +15,7 @@ function AppRouter() {
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/signup" element={<Signup />} />
-				<Route path="/home" element={<App />} />
+				<Route path="/app" element={<App />} />
 				<Route path="compendium" element={<Compendium />} />
 				<Route path="compendium/spells" element={<SpellLookupBook />} />
 			</Routes>
