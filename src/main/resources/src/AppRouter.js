@@ -6,6 +6,7 @@ import Signup from './Signup';
 import App from './App';
 import Compendium from './Compendium';
 import SpellLookupBook from './SpellLookupBook';
+import CreateSheet from './CreateSheet';
 
 
 function AppRouter() {
@@ -18,6 +19,7 @@ function AppRouter() {
 				<Route path="/app" element={<App />} />
 				<Route path="compendium" element={<Compendium />} />
 				<Route path="compendium/spells" element={<SpellLookupBook />} />
+				<Route path ="create-sheet" element={<CreateSheet />} />
 			</Routes>
 		</Router>
 	);

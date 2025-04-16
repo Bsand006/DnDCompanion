@@ -13,12 +13,25 @@ export const login = async (username, password) => {
 
 		);
 		console.log('login success!!!!' + response.status)
-		
-		return response 
+
+		return response
 
 	} catch (error) {
 
 		throw new Error('Login Failed');
+	}
+}
+
+export const signup = async (username, password) => {
+	try {
+		const response = await axios.post(`${API_URL}/signup`, new URLSearchParams({ username, password }),
+			{ withCredentials: true }
+		)
+
+		return response
+	} catch (error) {
+
+		throw new Error('Signup Failed');
 	}
 }
 
@@ -32,7 +45,7 @@ export const logout = async () => {
 
 export const fetchProtectedResource = async () => {
 	try {
-		const response = await axios.get(`${API_URL}/protected`, {withCredentials: true});
+		const response = await axios.get(`${API_URL}/protected`, { withCredentials: true });
 		return response.data;
 	} catch (error) {
 		throw new Error('Access denied');
