@@ -39,14 +39,4 @@ function App() {
 	);
 };
 
-function CreateSheet() {
-	return <h2>Create Sheet Page</h2>;
-}
-
-function OpenSheet() {
-	return <h2>Open Sheet Page</h2>;
-}
-
-
-
 export default App;

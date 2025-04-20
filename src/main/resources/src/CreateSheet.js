@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CreateSheet.css';
+import './CreateSheet2.css'
 
 function CreateSheet() {
 	const navigate = useNavigate();
+
+	const [stage, setStage] = useState(1)
+
+	const [stats, setStats] = useState({
+		strength: 8,
+		dexterity: 8,
+		constitution: 8,
+		intelligence: 8,
+		wisdom: 8,
+		charisma: 8
+	});
 
 	const [useAverageHP, setUseAverageHP] = useState(false)
 	const [useOptionalFeatures, setUseOptionalFeatures] = useState(false)
@@ -18,114 +30,267 @@ function CreateSheet() {
 	}
 
 	const handleNextClick = () => {
+		setStage((prevStage) => prevStage + 1);
+	}
+
+	const handleBackClick = () => {
+		setStage((prevStage) => prevStage - 1);
+	}
+
+	const [availableValues, setAvailableValues] = useState([8, 10, 12, 13, 14, 15]); // For standard array only
+
+	const [points, setPoints] = useState(27); // For point buy only
+
+	const rollStats = () => {
 
 	}
 
-	return (
-		<div className="CreateSheet">
-			<div className="CreateSheet-body">
+	const handleStatChange = (stat, newValue) => {
+		const parsedValue = parseInt(newValue, 10);
+		const prevValue = stats[stat];
 
-				<aside className="CreateSheet-sidebar">
-					<h2>Character Sheet Options</h2>
-					<ul>
-						<li>
-							<input
-								type="checkbox"
-								checked={useAverageHP}
-								onChange={(e) => setUseAverageHP(e.target.checked)}
-							/>
-							Use Average HP?
-						</li>
-						<li>
-							<label htmlFor="statOptions">Stat Options:</label>
-							<select id="statOptions"
-								value={statOption}
-								onChange={handleStatOptionChange}>
-								<option value="standard">Standard Array</option>
-								<option value="pointBuy">Point Buy</option>
-								<option value="custom">Rolled</option>
-							</select>
-						</li>
-						<li>
-							<input
-								type="checkbox"
-								checked={useOptionalFeatures}
-								onChange={(e) => setUseOptionalFeatures(e.target.checked)}
-							/>
-							Use optional features?
-						</li>
-						<li>
-							<input
-								type="checkbox"
-								checked={useXP}
-								onChange={(e) => setUseXP(e.target.checked)}
-							/>
-							Use XP?
-						</li>
-					</ul>
-				</aside>
-				<header className="CreateSheet-header">
-					<h1>Create a Character Sheet</h1>
-					<div className="inputs-column">
-						<label htmlFor="name">Enter Character Name:</label>
+		if (statOption === 'standard') {
+
+			if (parsedValue === prevValue) return;
+
+			// Build the new stats object first
+			const newStats = {
+				...stats,
+				[stat]: parsedValue,
+			};
+
+			// Calculate new available values
+			let newAvailableValues = [...availableValues];
+
+			// Add the old value back if it was a valid number (not empty)
+			if (prevValue && !newAvailableValues.includes(prevValue)) {
+				newAvailableValues.push(prevValue);
+			}
+
+			// Remove the new selected value
+			newAvailableValues = newAvailableValues.filter((val) => val !== parsedValue);
+			newAvailableValues.sort((a, b) => a - b);
+
+			// Now update state together
+			setStats(newStats);
+			setAvailableValues(newAvailableValues);
+
+		} else if (statOption === 'pointBuy') {
+			if (parsedValue < 8 || parsedValue > 15) {
+				return;
+			}
+
+			const cost = (value) => {
+				if (value <= 13) return value - 8 // 1 point per stat above 8
+				return (value - 13) * 2 + 5 //cost increase for stats above 13
+			}
+
+			let prevCost = cost(prevValue);
+			let newCost = cost(parsedValue);
+			let pointDiff = newCost - prevCost;
+
+			if (points - pointDiff < 0) {
+				return;
+			}
+
+			setStats({
+				...stats,
+				[stat]: parsedValue,
+			})
+
+			setPoints(points - pointDiff)
+		}
+	};
+
+	const renderStatOption = () => {
+
+		if (statOption === 'standard') {
+
+			return Object.keys(stats).map((stat) => {
+				const currentValue = stats[stat];
+
+				// Allow all available values plus the currently selected one
+				const valuesForDropdown = [...availableValues];
+				if (currentValue && !valuesForDropdown.includes(currentValue)) {
+					valuesForDropdown.push(currentValue);
+				}
+
+				valuesForDropdown.sort((a, b) => a - b);
+
+				return (
+					<div key={stat}>
+						<label htmlFor={stat}>
+							{stat.charAt(0).toUpperCase() + stat.slice(1)}:
+						</label>
+						<select
+							id={stat}
+							value={currentValue}
+							onChange={(e) => handleStatChange(stat, e.target.value)}
+						>
+							<option value="" disabled>
+								Select a value
+							</option>
+							{valuesForDropdown.map((value) => (
+								<option key={value} value={value}>
+									{value}
+								</option>
+							))}
+
+						</select>
+					</div>
+				);
+			});
+		} else if (statOption === 'pointBuy') {
+			return Object.keys(stats).map((stat) => {
+				const currentValue = stats[stat];
+				return (
+					<div key={stat}>
+						<label htmlFor={stat}>
+							{stat.charAt(0).toUpperCase() + stat.slice(1)}:
+						</label>
 						<input
-							type="text" placeholder="Enter a name" value={name}
-							onChange={(e) => setName(e.target.value)}
+							type="number"
+							id={stat}
+							value={currentValue}
+							onChange={(e) => handleStatChange(stat, e.target.value)}
 						/>
 
-						<label htmlFor="class">Select Class:</label>
-						<select id="class"
-							value={Class}
-							onChange={(e) => setClass(e.target.value)}>
-							<option value="artificer">Artificer</option>
-							<option value="barbarian">Barbarian</option>
-							<option value="bard">Bard</option>
-							<option value="cleric">Cleric</option>
-							<option value="druid">Druid</option>
-							<option value="fighter">Fighter</option>
-							<option value="monk">Monk</option>
-							<option value="paladin">Paladin</option>
-							<option value="ranger">Ranger</option>
-							<option value="rogue">Rogue</option>
-							<option value="sorcerer">Sorcerer</option>
-							<option value="warlock">Warlock</option>
-							<option value="wizard">Wizard</option>
-						</select>
+					</div>
+				)
+			});
+		} else if (statOption === 'rolled') {
 
-						<label htmlFor="level">Select Level:</label>
-						<select id="level"
-							value={level}
-							onChange={(e) => setLevel(e.target.value)}>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-							<option value="11">11</option>
-							<option value="12">12</option>
-							<option value="13">13</option>
-							<option value="14">14</option>
-							<option value="15">15</option>
-							<option value="16">16</option>
-							<option value="17">17</option>
-							<option value="18">18</option>
-							<option value="19">19</option>
-							<option value="20">20</option>
-						</select>
-						<button type="button" onClick={() => handleNextClick()}>
-							Next
-						</button>
-					</ div>
-				</header>
+		}
+
+
+	}
+	if (stage === 1) {
+		return (
+			<div className="CreateSheet">
+				<div className="CreateSheet-body">
+
+					<><aside className="CreateSheet-sidebar">
+						<h2>Character Sheet Options</h2>
+						<ul>
+							<li>
+								<input
+									type="checkbox"
+									checked={useAverageHP}
+									onChange={(e) => setUseAverageHP(e.target.checked)} />
+								Use Average HP?
+							</li>
+							<li>
+								<label htmlFor="statOptions">Stat Options:</label>
+								<select id="statOptions"
+									value={statOption}
+									onChange={handleStatOptionChange}>
+									<option value="standard">Standard Array</option>
+									<option value="pointBuy">Point Buy</option>
+									<option value="rolled">Rolled</option>
+								</select>
+							</li>
+							<li>
+								<input
+									type="checkbox"
+									checked={useOptionalFeatures}
+									onChange={(e) => setUseOptionalFeatures(e.target.checked)} />
+								Use optional features?
+							</li>
+							<li>
+								<input
+									type="checkbox"
+									checked={useXP}
+									onChange={(e) => setUseXP(e.target.checked)} />
+								Use XP?
+							</li>
+						</ul>
+					</aside><header className="CreateSheet-header">
+							<h1>Create a Character Sheet</h1>
+							<div className="inputs-column">
+								<label htmlFor="name">Enter Character Name:</label>
+								<input
+									type="text" placeholder="Enter a name" value={name}
+									onChange={(e) => setName(e.target.value)} />
+
+								<label htmlFor="class">Select Class:</label>
+								<select id="class"
+									value={Class}
+									onChange={(e) => setClass(e.target.value)}>
+									<option value="artificer">Artificer</option>
+									<option value="barbarian">Barbarian</option>
+									<option value="bard">Bard</option>
+									<option value="cleric">Cleric</option>
+									<option value="druid">Druid</option>
+									<option value="fighter">Fighter</option>
+									<option value="monk">Monk</option>
+									<option value="paladin">Paladin</option>
+									<option value="ranger">Ranger</option>
+									<option value="rogue">Rogue</option>
+									<option value="sorcerer">Sorcerer</option>
+									<option value="warlock">Warlock</option>
+									<option value="wizard">Wizard</option>
+								</select>
+
+								<label htmlFor="level">Select Level:</label>
+								<select id="level"
+									value={level}
+									onChange={(e) => setLevel(e.target.value)}>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+									<option value="13">13</option>
+									<option value="14">14</option>
+									<option value="15">15</option>
+									<option value="16">16</option>
+									<option value="17">17</option>
+									<option value="18">18</option>
+									<option value="19">19</option>
+									<option value="20">20</option>
+								</select>
+								<button type="button" onClick={() => handleNextClick()}>
+									Next
+								</button>
+							</div>
+						</header></>
+				</div >
 			</div >
-		</div >
 
-	)
+		)
+	} else if (stage === 2) {
+		return (
+			<div className="CreateSheet2">
+				<header className="CreateSheet-header">
+
+					<div className="stage">
+						<h1>Assign Stats</h1>
+						{renderStatOption()}
+					</div>
+					{statOption === 'pointBuy' && (
+						<div className="points-stage">
+					    	points: {points}
+						</div>
+					)}
+					<button type="button" onClick={() => handleNextClick()}>
+						Next
+					</button>
+					<button type="button" onClick={() => handleBackClick()}>
+						Back
+					</button>
+
+				</header>
+			</div>
+		)
+	} else if (stage === 3) {
+
+	}
 }
-
 export default CreateSheet;

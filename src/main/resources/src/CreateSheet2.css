@@ -1,0 +1,64 @@
+.CreateSheet2 {
+	text-align: center;
+}
+
+.CreateSheet-header {
+	background-color: #1a5fb4;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: top;
+	height: 100vh;
+	margin: 0;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+.stage {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.pointbuy-stage {
+	background-color: rgb(255, 255, 255);
+	color: white;
+	padding: 20px;
+	border-radius: 10px;
+	flex: 0;
+	font-size : 18px;
+	color: rgb(36, 31, 49);
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.rolled-stage {
+	background-color: rgb(255, 255, 255);
+	color: white;
+	padding: 20px;
+	border-radius: 10px;
+	flex: 0;
+	margin-left: 1000px;
+	margin-top:25px;
+	font-size: 18px;
+	color: rgb(36, 31, 49);
+	font-weight: bold;
+}
+
+button-roll {
+	background-color: #61dafb;
+	padding: 10px 20px;
+	font-size: 16px;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+button {
+	background-color: #61dafb;
+	padding: 10px 20px;
+	font-size: 16px;
+	margin-top: 20px;
+	cursor: pointer;
+}
