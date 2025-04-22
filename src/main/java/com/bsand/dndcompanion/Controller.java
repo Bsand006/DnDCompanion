@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bsand.dndcompanion.data.GetClassInfo;
 import com.bsand.dndcompanion.data.ParseSpells;
 
 /*
@@ -29,8 +30,11 @@ public class Controller {
 	public void getCharacters(@RequestParam String userID) {
 		
 	}
-   
-
-   
-
+	
+	@GetMapping("api/class")
+	public Map<String, Object> getClassInfo(@RequestParam String className) {
+		GetClassInfo getClassInfo = new GetClassInfo();
+		return getClassInfo.getClass(className);
+		
+	}
 }

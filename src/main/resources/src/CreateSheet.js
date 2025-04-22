@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { rollStats as RollStats } from './dice/RollStats';
+import {getClass} from './services/apiService';
 import './CreateSheet.css';
 import './CreateSheet2.css'
 
@@ -39,10 +41,13 @@ function CreateSheet() {
 
 	const [availableValues, setAvailableValues] = useState([8, 10, 12, 13, 14, 15]); // For standard array only
 
+	const [rolledStats, setRolledStats] = useState([]) // For rolled stats only
+
 	const [points, setPoints] = useState(27); // For point buy only
-
-	const rollStats = () => {
-
+	
+	const getClassAbilties = () => {
+		const test = getClass('barbarian')
+		console.log(test)
 	}
 
 	const handleStatChange = (stat, newValue) => {
@@ -99,8 +104,34 @@ function CreateSheet() {
 			})
 
 			setPoints(points - pointDiff)
-		}
-	};
+		} else if (statOption === 'rolled') {
+			if (parsedValue === prevValue) return;
+
+			// Build the new stats object first
+			const newStats = {
+				...stats,
+				[stat]: parsedValue,
+			};
+
+			// Calculate new available values for rolled stats
+			let newAvailableValues = [...rolledStats];
+
+			// Add the old value back to the available rolled stats if it isn't already there
+			if (prevValue && !newAvailableValues.includes(prevValue)) {
+				newAvailableValues.push(prevValue);
+			}
+
+			// Remove the new selected value from the available rolled stats
+			newAvailableValues = newAvailableValues.filter((val) => val !== parsedValue);
+			newAvailableValues.sort((a, b) => a - b);
+
+			// Now update state together
+			setStats(newStats);
+			setRolledStats(newAvailableValues);
+
+
+		};
+	}
 
 	const renderStatOption = () => {
 
@@ -116,6 +147,7 @@ function CreateSheet() {
 				}
 
 				valuesForDropdown.sort((a, b) => a - b);
+
 
 				return (
 					<div key={stat}>
@@ -159,11 +191,44 @@ function CreateSheet() {
 				)
 			});
 		} else if (statOption === 'rolled') {
+			return Object.keys(stats).map((stat) => {
+				const currentValue = stats[stat];
 
+				// Filter out values already assigned to other stats from rolledStats
+				const availableValues = rolledStats.filter(value => !Object.values(stats).includes(value));
+
+				// Include the current value if it's still in the rolled stats
+				if (currentValue && !availableValues.includes(parseInt(currentValue))) {
+					availableValues.push(parseInt(currentValue));
+				}
+
+				availableValues.sort((a, b) => a - b);
+
+				return (
+					<div key={stat}>
+						<label htmlFor={stat}>
+							{stat.charAt(0).toUpperCase() + stat.slice(1)}:
+						</label>
+						<select
+							id={stat}
+							value={currentValue}
+							onChange={(e) => handleStatChange(stat, e.target.value)}
+						>
+							<option value="" disabled>
+								Select a value
+							</option>
+							{availableValues.map((value, index) => (
+								<option key={`${stat}-${value}-${index}`} value={value}>
+									{value}
+								</option>
+							))}
+						</select>
+					</div>
+				);
+			});
 		}
-
-
 	}
+
 	if (stage === 1) {
 		return (
 			<div className="CreateSheet">
@@ -276,21 +341,53 @@ function CreateSheet() {
 					</div>
 					{statOption === 'pointBuy' && (
 						<div className="points-stage">
-					    	points: {points}
+							points: {points}
 						</div>
 					)}
+					{statOption === 'rolled' && (
+						<div className="rolled-stage">
+							<button
+								onClick={() => {
+									const newRoll = RollStats().filter(value => value !== 0); // assuming this returns an array of numbers
+									setRolledStats(newRoll);
+
+									// Clear all stats by setting them to empty
+									const clearedStats = Object.fromEntries(
+										Object.keys(stats).map((key) => [key, '']) // Reset all stats to empty
+									);
+									setStats(clearedStats);
+								}}
+							>
+								Roll
+							</button>
+						</div>
+					)
+					}
+
 					<button type="button" onClick={() => handleNextClick()}>
 						Next
 					</button>
 					<button type="button" onClick={() => handleBackClick()}>
 						Back
 					</button>
-
+				</header >
+			</div >
+		)
+	} else if (stage === 3) {
+		return (
+			<div className="CreateSheet3">
+				<header className="CreateSheet-header">
+					<h1>Assign Abilities</h1>
+					{getClassAbilties()}
+					<button type="button" onClick={() => handleNextClick()}>
+						Next
+					</button>
+					<button type="button" onClick={() => handleBackClick()}>
+						Back
+					</button>
 				</header>
 			</div>
 		)
-	} else if (stage === 3) {
-
 	}
 }
 export default CreateSheet;
