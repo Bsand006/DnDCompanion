@@ -6,6 +6,7 @@ export const getSpells = async (query) => {
 	try {
 		const response = await axios.get(`${API_URL}/api/spells`, {
 			params: { query },
+			withCredentials: true,
 		});
 		return response.data;
 	} catch (error) {
@@ -14,10 +15,11 @@ export const getSpells = async (query) => {
 	}
 }
 
-export const getClass = async (className, lvl) => {
+export const getClass = async (className, level) => {
 	try {
 		const response = await axios.get(`${API_URL}/api/class`, {
-			params: {className, lvl},
+			params: {className, level},
+			withCredentials: true,
 		});
 		return response.data;
 	} catch (error) {

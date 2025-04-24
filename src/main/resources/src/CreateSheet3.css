@@ -16,6 +16,24 @@
 	color: white;
 }
 
+.abilities-container {
+	display: flex;
+	flex-direction: column;
+	gap: 5px; 
+	justify-content : center;
+	align-items: center;
+	justify-content: center;
+}
+
+.ability-row {
+	font-size: 5px;
+	border: 1px solid #ccc;
+	line-height: 1.5;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+}
+
 button {
 	padding: 10px 20px;
 	font-size: 16px;

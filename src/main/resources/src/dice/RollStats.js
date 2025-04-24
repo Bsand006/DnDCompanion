@@ -1,3 +1,9 @@
+
+/*
+    * RollStats.js
+    * This file contains the rollStats function that simulates rolling 4d6 and dropping the lowest die.
+*/
+
 export const rollStats = () => {
 	
 	const rolls = []

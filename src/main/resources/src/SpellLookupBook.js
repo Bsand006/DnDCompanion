@@ -20,8 +20,6 @@ function SpellDescription({ description }) {
 
 function SpellLookupBook() {
 
-
-
 	const [searchQuery, setSearchQuery] = useState('');
 	const [spells, setSpells] = useState([]); // State to store fetched spells
 

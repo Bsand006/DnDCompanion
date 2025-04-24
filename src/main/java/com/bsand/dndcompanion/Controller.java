@@ -32,9 +32,9 @@ public class Controller {
 	}
 	
 	@GetMapping("api/class")
-	public Map<String, Object> getClassInfo(@RequestParam String className) {
+	public Map<String, Object> getClassInfo(@RequestParam String className, @RequestParam int level) {
 		GetClassInfo getClassInfo = new GetClassInfo();
-		return getClassInfo.getClass(className);
+		return getClassInfo.getClass(className, level);
 		
 	}
 }

@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { rollStats as RollStats } from './dice/RollStats';
-import {getClass} from './services/apiService';
+import { getClass } from './services/apiService';
 import './CreateSheet.css';
-import './CreateSheet2.css'
+import './CreateSheet2.css';
 
 function CreateSheet() {
+
 	const navigate = useNavigate();
 
-	const [stage, setStage] = useState(1)
+	const [stage, setStage] = useState(1);
+
 
 	const [stats, setStats] = useState({
 		strength: 8,
@@ -19,23 +21,30 @@ function CreateSheet() {
 		charisma: 8
 	});
 
-	const [useAverageHP, setUseAverageHP] = useState(false)
-	const [useOptionalFeatures, setUseOptionalFeatures] = useState(false)
-	const [useXP, setUseXP] = useState(false)
-	const [statOption, setStatOption] = useState('standard')
-	const [name, setName] = useState('')
-	const [Class, setClass] = useState('Artificer')
-	const [level, setLevel] = useState(1)
+	const [useAverageHP, setUseAverageHP] = useState(false);
+	const [useOptionalFeatures, setUseOptionalFeatures] = useState(false);
+	const [useXP, setUseXP] = useState(false);
+	const [statOption, setStatOption] = useState('standard');
+	const [name, setName] = useState('');
+	const [Class, setClass] = useState('Artificer');
+	const [level, setLevel] = useState(1);
+	const [abilites, setAbilites] = useState([]);
+
+	useEffect(() => { // Asynchronously fetch when the stage first changes to 3
+		if (stage === 3) {
+			getClassAbilties(Class, level);
+		}
+	}, [stage, Class, level]);
 
 	const handleStatOptionChange = (e) => {
 		setStatOption(e.target.value);
 	}
 
-	const handleNextClick = () => {
+	const handleNextClick = () => { // Go to the next stage
 		setStage((prevStage) => prevStage + 1);
 	}
 
-	const handleBackClick = () => {
+	const handleBackClick = () => { // Go to the previous stage
 		setStage((prevStage) => prevStage - 1);
 	}
 
@@ -44,17 +53,32 @@ function CreateSheet() {
 	const [rolledStats, setRolledStats] = useState([]) // For rolled stats only
 
 	const [points, setPoints] = useState(27); // For point buy only
-	
-	const getClassAbilties = () => {
-		const test = getClass('barbarian')
-		console.log(test)
+
+	const getClassAbilties = async (query) => { // Get class abilites up to selected level
+		try {
+			const response = await getClass(query, level)
+
+			for (let i = 0; i < response.classFeature.length; i++) {
+				const classFeature = response.classFeature[i];
+				const featureName = classFeature.name;
+				const featureLevel = classFeature.level;
+				const featureDescription = classFeature.entries;
+
+				setAbilites((prev) => [...prev, { name: featureName, level: featureLevel, description: featureDescription }]);
+			}
+
+		} catch (error) {
+			console.error('Error fetching class abilities:', error);
+		}
 	}
+
+	console.log(abilites);
 
 	const handleStatChange = (stat, newValue) => {
 		const parsedValue = parseInt(newValue, 10);
 		const prevValue = stats[stat];
 
-		if (statOption === 'standard') {
+		if (statOption === 'standard') { // Standard array
 
 			if (parsedValue === prevValue) return;
 
@@ -80,7 +104,7 @@ function CreateSheet() {
 			setStats(newStats);
 			setAvailableValues(newAvailableValues);
 
-		} else if (statOption === 'pointBuy') {
+		} else if (statOption === 'pointBuy') { // point buy
 			if (parsedValue < 8 || parsedValue > 15) {
 				return;
 			}
@@ -90,6 +114,7 @@ function CreateSheet() {
 				return (value - 13) * 2 + 5 //cost increase for stats above 13
 			}
 
+			// Calculate point difference
 			let prevCost = cost(prevValue);
 			let newCost = cost(parsedValue);
 			let pointDiff = newCost - prevCost;
@@ -104,7 +129,7 @@ function CreateSheet() {
 			})
 
 			setPoints(points - pointDiff)
-		} else if (statOption === 'rolled') {
+		} else if (statOption === 'rolled') { // rolled stats
 			if (parsedValue === prevValue) return;
 
 			// Build the new stats object first
@@ -229,7 +254,7 @@ function CreateSheet() {
 		}
 	}
 
-	if (stage === 1) {
+	if (stage === 1) { // Stage 1: name, class, level, options
 		return (
 			<div className="CreateSheet">
 				<div className="CreateSheet-body">
@@ -330,7 +355,7 @@ function CreateSheet() {
 			</div >
 
 		)
-	} else if (stage === 2) {
+	} else if (stage === 2) { // Stage 2: Assign stats
 		return (
 			<div className="CreateSheet2">
 				<header className="CreateSheet-header">
@@ -373,12 +398,37 @@ function CreateSheet() {
 				</header >
 			</div >
 		)
-	} else if (stage === 3) {
+	} else if (stage === 3) { // Stage 3: Assign Abilities
+
 		return (
 			<div className="CreateSheet3">
 				<header className="CreateSheet-header">
 					<h1>Assign Abilities</h1>
-					{getClassAbilties()}
+					<div className="abilities-container">
+						{abilites.map((ability, index) => (
+							<div key={index} className="ability-row">
+								<h2>{ability.name}</h2>
+								<details>
+									<summary>Description</summary>
+									{Array.isArray(ability.description) ? (
+										ability.description.map((entry, i) => (
+											typeof entry === 'object' ? (
+												<div key={i}>
+													{Object.entries(entry).map(([key, value], j) => (
+														<p key={j}><strong>{key}:</strong> {JSON.stringify(value)}</p>
+													))}
+												</div>
+											) : (
+												<p key={i}>{entry}</p>
+											)
+										))
+									) : (
+										<p>{typeof ability.description === 'object' ? JSON.stringify(ability.description) : ability.description}</p>
+									)}
+								</details>
+							</div>
+						))}
+					</div>
 					<button type="button" onClick={() => handleNextClick()}>
 						Next
 					</button>
@@ -389,5 +439,6 @@ function CreateSheet() {
 			</div>
 		)
 	}
+
 }
 export default CreateSheet;
