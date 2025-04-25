@@ -18,12 +18,24 @@ export const getSpells = async (query) => {
 export const getClass = async (className, level) => {
 	try {
 		const response = await axios.get(`${API_URL}/api/class`, {
-			params: {className, level},
+			params: { className, level },
 			withCredentials: true,
 		});
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching class:', error);
 		throw error;
+	}
+}
+
+export const getRaces = async (sources) => {
+	try {
+		const response = await axios.get(`${API_URL}/api/race`, {
+			params: { sources },
+			withCredentials: true,
+		});
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching races:', error);
 	}
 }

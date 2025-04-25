@@ -4,6 +4,7 @@ import { rollStats as RollStats } from './dice/RollStats';
 import { getClass } from './services/apiService';
 import './CreateSheet.css';
 import './CreateSheet2.css';
+import './CreateSheet3.css';
 
 function CreateSheet() {
 
@@ -27,6 +28,7 @@ function CreateSheet() {
 	const [statOption, setStatOption] = useState('standard');
 	const [name, setName] = useState('');
 	const [Class, setClass] = useState('Artificer');
+	const [subclass, setSubclass] = useState('');
 	const [level, setLevel] = useState(1);
 	const [abilites, setAbilites] = useState([]);
 
@@ -54,6 +56,15 @@ function CreateSheet() {
 
 	const [points, setPoints] = useState(27); // For point buy only
 
+
+	const handleAbilitySelection = (abilityName, selectedValue) => {
+
+	}
+
+	const handleCheckboxSelection = (abilityName, selectedValue, isChecked, limit) => {
+
+	}
+
 	const getClassAbilties = async (query) => { // Get class abilites up to selected level
 		try {
 			const response = await getClass(query, level)
@@ -64,7 +75,9 @@ function CreateSheet() {
 				const featureLevel = classFeature.level;
 				const featureDescription = classFeature.entries;
 
-				setAbilites((prev) => [...prev, { name: featureName, level: featureLevel, description: featureDescription }]);
+				const requiresSelection = classFeature.requiresSelection;
+
+				setAbilites((prev) => [...prev, { name: featureName, requiresSelect: requiresSelection, level: featureLevel, description: featureDescription }]);
 			}
 
 		} catch (error) {
@@ -73,6 +86,7 @@ function CreateSheet() {
 	}
 
 	console.log(abilites);
+	console.log(availableSubclasses);
 
 	const handleStatChange = (stat, newValue) => {
 		const parsedValue = parseInt(newValue, 10);
@@ -404,30 +418,66 @@ function CreateSheet() {
 			<div className="CreateSheet3">
 				<header className="CreateSheet-header">
 					<h1>Assign Abilities</h1>
-					<div className="abilities-container">
-						{abilites.map((ability, index) => (
-							<div key={index} className="ability-row">
-								<h2>{ability.name}</h2>
-								<details>
-									<summary>Description</summary>
-									{Array.isArray(ability.description) ? (
-										ability.description.map((entry, i) => (
-											typeof entry === 'object' ? (
-												<div key={i}>
-													{Object.entries(entry).map(([key, value], j) => (
-														<p key={j}><strong>{key}:</strong> {JSON.stringify(value)}</p>
-													))}
-												</div>
-											) : (
-												<p key={i}>{entry}</p>
-											)
-										))
-									) : (
-										<p>{typeof ability.description === 'object' ? JSON.stringify(ability.description) : ability.description}</p>
-									)}
-								</details>
-							</div>
-						))}
+					<div className="scrollable-abilities">
+						<div className="abilities-container">
+							{abilites.map((ability, index) => (
+								<div key={index} className="ability-row">
+									<h2>{ability.name}</h2>
+									<p>Level: {ability.level}</p>
+									<details>
+										<summary>Description</summary>
+										{Array.isArray(ability.description) ? (
+											ability.description.map((entry, i) => (
+												typeof entry === 'object' ? (
+													<div key={i}>
+														{Object.entries(entry).map(([key, value], j) => (
+															<p key={j}><strong>{key}:</strong> {JSON.stringify(value)}</p>
+														))}
+													</div>
+												) : (
+													<p key={i}>{entry}</p>
+												)
+											))
+										) : (
+											<p>{typeof ability.description === 'object' ? JSON.stringify(ability.description) : ability.description}</p>
+										)}
+										{ability.requiresSelect === true && ability.selection && (
+											<div>
+												<label htmlFor={`selection-${index}`}>Choose an option:</label>
+
+												{ability.selection.type === 'dropdown' && (
+													<select
+														id={`selection-${index}`}
+														onChange={(e) => handleAbilitySelection(ability.name, e.target.value)}
+													>
+														<option value="" disabled>Select an option</option>
+														{ability.selection.options.map((option, i) => (
+															<option key={i} value={option}>{option}</option>
+														))}
+													</select>
+												)}
+
+												{ability.selection.type === 'checkbox' && (
+													<div>
+														{ability.selection.options.map((option, i) => (
+															<div key={i}>
+																<input
+																	type="checkbox"
+																	id={`${ability.name}-${i}`}
+																	value={option}
+																	onChange={(e) => handleCheckboxSelection(ability.name, option, e.target.checked, ability.selection.limit)}
+																/>
+																<label htmlFor={`${ability.name}-${i}`}>{option}</label>
+															</div>
+														))}
+													</div>
+												)}
+											</div>
+										)}
+									</details>
+								</div>
+							))}
+						</div>
 					</div>
 					<button type="button" onClick={() => handleNextClick()}>
 						Next
@@ -438,7 +488,9 @@ function CreateSheet() {
 				</header>
 			</div>
 		)
+	} else if (stage === 4) {
+		
+		
 	}
-
 }
 export default CreateSheet;

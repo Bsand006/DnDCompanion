@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bsand.dndcompanion.data.GetClassInfo;
+import com.bsand.dndcompanion.data.GetRaces;
 import com.bsand.dndcompanion.data.ParseSpells;
 
 /*
@@ -36,5 +37,11 @@ public class Controller {
 		GetClassInfo getClassInfo = new GetClassInfo();
 		return getClassInfo.getClass(className, level);
 		
+	}
+	
+	@GetMapping("/api/race")
+	public Map<String, Object> getRaceInfo(@RequestParam List<String> sources) {
+		GetRaces getRaces = new GetRaces();
+		return null;
 	}
 }
