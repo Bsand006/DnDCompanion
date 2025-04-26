@@ -86,7 +86,6 @@ function CreateSheet() {
 	}
 
 	console.log(abilites);
-	console.log(availableSubclasses);
 
 	const handleStatChange = (stat, newValue) => {
 		const parsedValue = parseInt(newValue, 10);

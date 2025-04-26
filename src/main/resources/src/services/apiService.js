@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const API_URL = `http://localhost:8080`;
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const getSpells = async (query) => {
 	try {
-		const response = await axios.get(`${API_URL}/api/spells`, {
+		const response = await axios.get(`${API_URL}/spells`, {
 			params: { query },
 			withCredentials: true,
 		});
@@ -17,7 +17,7 @@ export const getSpells = async (query) => {
 
 export const getClass = async (className, level) => {
 	try {
-		const response = await axios.get(`${API_URL}/api/class`, {
+		const response = await axios.get(`${API_URL}/class`, {
 			params: { className, level },
 			withCredentials: true,
 		});
@@ -30,7 +30,7 @@ export const getClass = async (className, level) => {
 
 export const getRaces = async (sources) => {
 	try {
-		const response = await axios.get(`${API_URL}/api/race`, {
+		const response = await axios.get(`${API_URL}/race`, {
 			params: { sources },
 			withCredentials: true,
 		});

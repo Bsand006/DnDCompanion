@@ -2,6 +2,7 @@ package com.bsand.dndcompanion;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.ldap.core.support.LdapContextSource;
@@ -14,6 +15,7 @@ import org.springframework.security.ldap.authentication.BindAuthenticator;
 import org.springframework.security.ldap.authentication.LdapAuthenticationProvider;
 import org.springframework.security.ldap.userdetails.DefaultLdapAuthoritiesPopulator;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
 
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -27,11 +29,21 @@ import jakarta.servlet.http.HttpServletResponse;
 @Configuration
 public class SecurityConfig {
 
+	@Value("${APACHEDS_URL}")
+	private String ldapUrl;
+
+	@Value("${APACHEDS_BASE}")
+	private String ldapBase;
+
+	@Value("${FRONTEND_URL}")
+	private String frontendUrl;
+
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		
 		http.csrf(csrf -> csrf.disable()).cors(cors -> cors.configurationSource(request -> {
-			var corsConfig = new org.springframework.web.cors.CorsConfiguration();
-			corsConfig.setAllowedOrigins(List.of("http://localhost:3000"));
+			CorsConfiguration corsConfig = new CorsConfiguration();
+			corsConfig.setAllowedOriginPatterns(List.of(frontendUrl));
 			corsConfig.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 			corsConfig.setAllowedHeaders(List.of("*"));
 			corsConfig.setAllowCredentials(true);
@@ -61,10 +73,10 @@ public class SecurityConfig {
 
 	@Bean
 	public LdapContextSource contextSource() {
-		var contextSource = new LdapContextSource();
-		contextSource.setUrl("ldap://localhost:10389");
-		contextSource.setBase("dc=example,dc=com");
-		contextSource.setPooled(false); // optional
+		LdapContextSource contextSource = new LdapContextSource();
+		contextSource.setUrl(ldapUrl);
+		contextSource.setBase(ldapBase);
+		contextSource.setPooled(false);
 		return contextSource;
 	}
 
