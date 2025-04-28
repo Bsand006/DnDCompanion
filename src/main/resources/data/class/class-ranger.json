@@ -1526,13 +1526,32 @@
       "className": "Ranger",
       "classSource": "PHB",
       "level": 1,
+      "requiresSelection": true,
       "entries": [
         "Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy.",
-        "Choose a type of favored enemy: bestiary, bestiary, bestiary, bestiary, bestiary, bestiary, bestiary, bestiary, bestiary, bestiary, bestiary, bestiary, or bestiary. Alternatively, you can select two races of bestiary (such as creature gnoll and creature orc) as favored enemies.",
-        "You have advantage on Wisdom (skill Survival}) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
+        "Choose a type of favored enemy: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can select two races of bestiary (such as creature gnoll and creature orc) as favored enemies.",
+        "You have advantage on Wisdom (skill Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
         "When you gain this feature, you also learn one language of your choice that is spoken by your favored enemies, if they speak one at all.",
         "You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures."
-      ]
+      ],
+      "selection": {
+        "type": "dropdown",
+        "options": [
+          "Aberrations",
+          "Beasts",
+          "Celestials",
+          "Constructs",
+          "Dragons",
+          "Elementals",
+          "Fey",
+          "Fiends",
+          "Giants",
+          "Monstrosities",
+          "Oozes",
+          "Plants",
+          "Undead"
+        ]
+      }
     },
     {
       "name": "Favored Foe",
@@ -1547,7 +1566,7 @@
         "When you hit a creature with an attack roll, you can call on your mystical bond with nature to mark the target as your favored enemy for 1 minute or until you lose your status concentration} (as if you were status concentration on a spell).",
         "The first time on each of your turns that you hit the favored enemy and deal damage to it, including when you mark it, you can increase that damage by dice 1d4}.",
         "You can use this feature to mark a favored enemy a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
-        "This feature's extra damage increases when you reach certain levels in this class: to dice 1d6} at 6th level and to dice 1d8} at 14th level."
+        "This feature's extra damage increases when you reach certain levels in this class: to dice 1d6 at 6th level and to dice 1d8} at 14th level."
       ]
     },
     {
@@ -1558,22 +1577,33 @@
       "className": "Ranger",
       "classSource": "PHB",
       "level": 1,
+      "requiresSelection": true,
       "entries": [
         "You are particularly familiar with one type of natural environment and are adept at traveling and surviving in such regions. Choose one type of favored terrain: arctic, coast, desert, forest, grassland, mountain, swamp, or the Underdark. When you make an Intelligence or Wisdom check related to your favored terrain, your proficiency bonus is doubled if you are using a skill that you're proficient in.",
         "While traveling for an hour or more in your favored terrain, you gain the following benefits:",
-        {
-          "type": "list",
-          "items": [
+      
             "Difficult terrain doesn't slow your group's travel.",
             "Your group can't become lost except by magical means.",
             "Even when you are engaged in another activity while traveling (such as foraging, navigating, or tracking), you remain alert to danger.",
             "If you are traveling alone, you can move stealthily at a normal pace.",
             "When you forage, you find twice as much food as you normally would.",
-            "While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area."
-          ]
-        },
+            "While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area.",
+
         "You choose additional favored terrain types at 6th and 10th level."
-      ]
+      ],
+      "selection": {
+        "type": "dropdown",
+        "options": [
+          "Arctic",
+          "Coast",
+          "Desert",
+          "Forest",
+          "Grassland",
+          "Mountain",
+          "Swamp",
+          "Underdark"
+        ]
+      }
     },
     {
       "name": "Fighting Style",
@@ -1584,41 +1614,7 @@
       "classSource": "PHB",
       "level": 2,
       "entries": [
-        "At 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.",
-        {
-          "type": "options",
-          "count": 1,
-          "entries": [
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Archery"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Defense"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Dueling"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Two-Weapon Fighting"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Blind Fighting|TCE"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Druidic Warrior|TCE"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Thrown Weapon Fighting|TCE"
-            }
-          ]
-        }
+        "At 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again."      
       ],
       "requiresSelection": true,
       "selection": {
@@ -1643,45 +1639,18 @@
       "classSource": "PHB",
       "level": 2,
       "entries": [
-        "By the time you reach 2nd level, you have learned to use the magical essence of nature to cast spells, much as a druid does. See PHB for the general rules of spellcasting and PHB for the spells.",
-        {
-          "type": "entries",
-          "name": "Spell Slots",
-          "entries": [
+        	"By the time you reach 2nd level, you have learned to use the magical essence of nature to cast spells, much as a druid does. See PHB for the general rules of spellcasting and PHB for the spells.",
+      
             "The Ranger table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
-            "For example, if you know the 1st-level spell spell animal friendship} and have a 1st-level and a 2nd-level spell slot available, you can cast spell animal friendship} using either slot."
-          ]
-        },
-        {
-          "type": "entries",
-          "name": "Spells Known of 1st Level and Higher",
-          "entries": [
+            "For example, if you know the 1st-level spell spell animal friendship} and have a 1st-level and a 2nd-level spell slot available, you can cast spell animal friendship} using either slot.",
+       
+      
             "You know two 1st-level spells of your choice from the ranger spell list.",
             "The Spells Known column of the Ranger table shows when you learn more ranger spells of your choice. Each of these spells must be of a level for which you have spell slots. For instance, when you reach 5th level in this class, you can learn one new spell of 1st or 2nd level.",
-            "Additionally, when you gain a level in this class, you can choose one of the ranger spells you know and replace it with another spell from the ranger spell list, which also must be of a level for which you have spell slots."
-          ]
-        },
-        {
-          "type": "entries",
-          "name": "Spellcasting Ability",
-          "entries": [
-            "Wisdom is your spellcasting ability for your ranger spells, since your magic draws on your attunement to nature. You use your Wisdom whenever a spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a ranger spell you cast and when making an attack roll with one.",
-            {
-              "type": "abilityDc",
-              "name": "Spell",
-              "attributes": [
-                "wis"
-              ]
-            },
-            {
-              "type": "abilityAttackMod",
-              "name": "Spell",
-              "attributes": [
-                "wis"
-              ]
-            }
-          ]
-        }
+            "Additionally, when you gain a level in this class, you can choose one of the ranger spells you know and replace it with another spell from the ranger spell list, which also must be of a level for which you have spell slots.",
+     
+            "Wisdom is your spellcasting ability for your ranger spells, since your magic draws on your attunement to nature. You use your Wisdom whenever a spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a ranger spell you cast and when making an attack roll with one."
+         
       ]
     },
     {
@@ -1793,7 +1762,7 @@
       "level": 4,
       "entries": [
         "When you reach 4th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
-        "If your DM allows the use of feats, you may instead take a feats.html."
+        "If your DM allows the use of feats, you may instead take a feat."
       ],
       "requiresSelection": true,
       "selection": {
@@ -1827,7 +1796,7 @@
       "classSource": "PHB",
       "level": 5,
       "entries": [
-        "Beginning at 5th level, you can attack twice, instead of once, whenever you take the action Attack} action on your turn."
+        "Beginning at 5th level, you can attack twice, instead of once, whenever you take the action Attack action on your turn."
       ]
     },
     {
@@ -1856,11 +1825,43 @@
       "srd": true,
       "className": "Ranger",
       "classSource": "PHB",
+      "requiresSelection": true,
       "level": 6,
       "entries": [
         "At 6th level, you gain an additional favored terrain.",
         "At 6th level, you choose one additional favored enemy, as well as an associated language. Your choice should reflect the types of monsters you have encountered on your adventures."
-      ]
+      ],
+      "selection1": {
+        "type": "dropdown",
+        "options": [
+          "Aberrations",
+          "Beasts",
+          "Celestials",
+          "Constructs",
+          "Dragons",
+          "Elementals",
+          "Fey",
+          "Fiends",
+          "Giants",
+          "Monstrosities",
+          "Oozes",
+          "Plants",
+          "Undead"
+        ]
+      },
+      "selection2": {
+        "type": "dropdown",
+        "options": [
+          "Arctic",
+          "Coast",
+          "Desert",
+          "Forest",
+          "Grassland",
+          "Mountain",
+          "Swamp",
+          "Underdark"
+        ]
+      }
     },
     {
       "name": "Ranger Archetype feature",
@@ -1884,7 +1885,7 @@
       "level": 8,
       "entries": [
         "When you reach 8th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
-        "If your DM allows the use of feats, you may instead take a feats.html."
+        "If your DM allows the use of feats, you may instead take a feat."
       ],
       "requiresSelection": true,
       "selection": {
@@ -1906,7 +1907,7 @@
       "level": 8,
       "entries": [
         "Starting at 8th level, moving through nonmagical quickref difficult terrain costs you no extra movement. You can also pass through nonmagical plants without being slowed by them and without taking damage from them if they have thorns, spines, or a similar hazard.",
-        "In addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such as those created by the spell entangle} spell."
+        "In addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such as those created by the spell entangle spell."
       ]
     },
     {
@@ -1939,7 +1940,7 @@
       "level": 10,
       "entries": [
         "Starting at 10th level, you can spend 1 minute creating camouflage for yourself. You must have access to fresh mud, dirt, plants, soot, and other naturally occurring materials with which to create your camouflage.",
-        "Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (skill Stealth}) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit."
+        "Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (skill Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit."
       ]
     },
     {
@@ -1950,9 +1951,23 @@
       "className": "Ranger",
       "classSource": "PHB",
       "level": 10,
+      "requiresSelection": true,
       "entries": [
         "You gain an additional favored terrain."
-      ]
+      ],
+      "selection": {
+        "type": "dropdown",
+        "options": [
+          "Arctic",
+          "Coast",
+          "Desert",
+          "Forest",
+          "Grassland",
+          "Mountain",
+          "Swamp",
+          "Underdark"
+        ]
+      }
     },
     {
       "name": "Nature's Veil",
@@ -1990,7 +2005,7 @@
       "level": 12,
       "entries": [
         "When you reach 12th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
-        "If your DM allows the use of feats, you may instead take a feats.html."
+        "If your DM allows the use of feats, you may instead take a feat."
       ],
       "requiresSelection": true,
       "selection": {
@@ -2010,9 +2025,28 @@
       "className": "Ranger",
       "classSource": "PHB",
       "level": 14,
+      "requiresSelection": true,
       "entries": [
         "At 14th level, you choose one additional favored enemy, as well as an associated language. Your choice should reflect the types of monsters you have encountered on your adventures."
-      ]
+      ],
+      "selection": {
+        "type": "dropdown",
+        "options": [
+          "Aberrations",
+          "Beasts",
+          "Celestials",
+          "Constructs",
+          "Dragons",
+          "Elementals",
+          "Fey",
+          "Fiends",
+          "Giants",
+          "Monstrosities",
+          "Oozes",
+          "Plants",
+          "Undead"
+        ]
+      }
     },
     {
       "name": "Vanish",
@@ -2023,7 +2057,7 @@
       "classSource": "PHB",
       "level": 14,
       "entries": [
-        "Starting at 14th level, you can use the action Hide} action as a bonus action on your turn. Also, you can't be tracked by nonmagical means, unless you choose to leave a trail."
+        "Starting at 14th level, you can use the action Hide action as a bonus action on your turn. Also, you can't be tracked by nonmagical means, unless you choose to leave a trail."
       ]
     },
     {
@@ -2048,7 +2082,7 @@
       "level": 16,
       "entries": [
         "When you reach 16th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
-        "If your DM allows the use of feats, you may instead take a feats.html."
+        "If your DM allows the use of feats, you may instead take a feat."
       ],
       "requiresSelection": true,
       "selection": {
@@ -2069,7 +2103,7 @@
       "classSource": "PHB",
       "level": 18,
       "entries": [
-        "At 18th level, you gain preternatural senses that help you fight creatures you can't see. When you attack a creature you can't see, your inability to see it doesn't impose disadvantage on your attack rolls against it. You are also aware of the location of any condition invisible} creature within 30 feet of you, provided that the creature isn't hidden from you and you aren't condition blinded} or condition deafened}."
+        "At 18th level, you gain preternatural senses that help you fight creatures you can't see. When you attack a creature you can't see, your inability to see it doesn't impose disadvantage on your attack rolls against it. You are also aware of the location of any condition invisible creature within 30 feet of you, provided that the creature isn't hidden from you and you aren't condition blinded or condition deafened."
       ]
     },
     {
@@ -2082,7 +2116,7 @@
       "level": 19,
       "entries": [
         "When you reach 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
-        "If your DM allows the use of feats, you may instead take a feats.html."
+        "If your DM allows the use of feats, you may instead take a feat."
       ],
       "requiresSelection": true,
       "selection": {

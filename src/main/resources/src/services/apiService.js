@@ -28,10 +28,9 @@ export const getClass = async (className, level) => {
 	}
 }
 
-export const getRaces = async (sources) => {
+export const getRaces = async () => {
 	try {
 		const response = await axios.get(`${API_URL}/race`, {
-			params: { sources },
 			withCredentials: true,
 		});
 		return response.data;

@@ -1,0 +1,219 @@
+[
+  {
+    "name": "Agonizing Blast",
+    "description": "Add your Charisma modifier to the damage of your Eldritch Blast cantrip.",
+    "source": "PHB",
+    "prerequisites": ["Eldritch Blast cantrip"]
+  },
+  {
+    "name": "Armor of Shadows",
+    "description": "You can cast Mage Armor on yourself at will, without expending a spell slot or material components.",
+    "source": "PHB",
+    "prerequisites": []
+  },
+  {
+    "name": "Beast Speech",
+    "description": "You can cast Speak with Animals at will, without expending a spell slot.",
+    "source": "PHB",
+    "prerequisites": []
+  },
+  {
+    "name": "Beguiling Influence",
+    "description": "You gain proficiency in Deception and Persuasion skills.",
+    "source": "PHB",
+    "prerequisites": []
+  },
+  {
+    "name": "Bond of the Talisman",
+    "description": "When wearing your talisman, you can teleport to its bearer or have them teleport to you.",
+    "source": "TCoE",
+    "prerequisites": ["Pact of the Talisman feature"]
+  },
+  {
+    "name": "Devil's Sight",
+    "description": "You can see normally in darkness, both magical and nonmagical, to a distance of 120 feet.",
+    "source": "PHB",
+    "prerequisites": []
+  },
+  {
+    "name": "Eldritch Mind",
+    "description": "You have advantage on Constitution saving throws that you make to maintain your concentration on a spell.",
+    "source": "TCoE",
+    "prerequisites": []
+  },
+  {
+    "name": "Eldritch Sight",
+    "description": "You can cast Detect Magic at will, without expending a spell slot.",
+    "source": "PHB",
+    "prerequisites": []
+  },
+  {
+    "name": "Fiendish Vigor",
+    "description": "You can cast False Life on yourself at will as a 1st-level spell, without expending a spell slot or material components.",
+    "source": "PHB",
+    "prerequisites": []
+  },
+  {
+    "name": "Gaze of Two Minds",
+    "description": "You can use your action to touch a willing humanoid and perceive through its senses until the end of your next turn.",
+    "source": "PHB",
+    "prerequisites": []
+  },
+  {
+    "name": "Gift of the Ever-Living Ones",
+    "description": "Whenever you regain hit points while your familiar is within 100 feet of you, treat any dice rolled for healing as having rolled their maximum value.",
+    "source": "XGtE",
+    "prerequisites": ["Pact of the Chain feature"]
+  },
+  {
+    "name": "Grasp of Hadar",
+    "description": "Once on each of your turns when you hit a creature with Eldritch Blast, you can move that creature closer to you.",
+    "source": "XGtE",
+    "prerequisites": ["Eldritch Blast cantrip"]
+  },
+  {
+    "name": "Improved Pact Weapon",
+    "description": "You can use any weapon you summon with your Pact of the Blade feature as a spellcasting focus.",
+    "source": "XGtE",
+    "prerequisites": ["Pact of the Blade feature"]
+  },
+  {
+    "name": "Lance of Lethargy",
+    "description": "Once on each of your turns when you hit a creature with Eldritch Blast, you can reduce that creature's speed by 10 feet until the end of your next turn.",
+    "source": "XGtE",
+    "prerequisites": ["Eldritch Blast cantrip"]
+  },
+  {
+    "name": "Mask of Many Faces",
+    "description": "You can cast Disguise Self at will, without expending a spell slot.",
+    "source": "PHB",
+    "prerequisites": []
+  },
+  {
+    "name": "Repelling Blast",
+    "description": "When you hit a creature with Eldritch Blast, you can push the creature away from you.",
+    "source": "PHB",
+    "prerequisites": ["Eldritch Blast cantrip"]
+  },
+  {
+    "name": "Thief of Five Fates",
+    "description": "You can cast Bane once using a warlock spell slot. You can't do so again until you finish a long rest.",
+    "source": "PHB",
+    "prerequisites": []
+  },
+  {
+    "name": "Ascendant Step",
+    "description": "You can cast Levitate on yourself at will, without expending a spell slot or material components.",
+    "source": "PHB",
+    "prerequisites": ["9th level"]
+  },
+  {
+    "name": "Gift of the Depths",
+    "description": "You can breathe underwater, and you can cast Water Breathing once without expending a spell slot.",
+    "source": "XGtE",
+    "prerequisites": ["5th level"]
+  },
+  {
+    "name": "Maddening Hex",
+    "description": "As a bonus action, you cause psychic disturbance around the target cursed by your Hex spell or a warlock feature.",
+    "source": "XGtE",
+    "prerequisites": ["5th level", "Hex spell or a warlock feature that curses"]
+  },
+  {
+    "name": "Minions of Chaos",
+    "description": "You can cast Conjure Elemental once using a warlock spell slot. You can't do so again until you finish a long rest.",
+    "source": "PHB",
+    "prerequisites": ["9th level"]
+  },
+  {
+    "name": "Mire the Mind",
+    "description": "You can cast Slow once using a warlock spell slot. You can't do so again until you finish a long rest.",
+    "source": "PHB",
+    "prerequisites": ["5th level"]
+  },
+  {
+    "name": "Otherworldly Leap",
+    "description": "You can cast Jump on yourself at will, without expending a spell slot or material components.",
+    "source": "PHB",
+    "prerequisites": ["9th level"]
+  },
+  {
+    "name": "Protection of the Talisman",
+    "description": "When the wearer of your talisman fails a saving throw, they can add a d4 to the roll, potentially turning the save into a success.",
+    "source": "TCoE",
+    "prerequisites": ["Pact of the Talisman feature"]
+  },
+  {
+    "name": "Sign of Ill Omen",
+    "description": "You can cast Bestow Curse once using a warlock spell slot. You can't do so again until you finish a long rest.",
+    "source": "PHB",
+    "prerequisites": ["5th level"]
+  },
+  {
+    "name": "Tomb of Levistus",
+    "description": "As a reaction when you take damage, you can entomb yourself in ice, gaining temporary hit points.",
+    "source": "XGtE",
+    "prerequisites": ["5th level"]
+  },
+  {
+    "name": "Relentless Hex",
+    "description": "You can magically teleport up to 30 feet to an unoccupied space you can see within 5 feet of the target cursed by your Hex spell or a warlock feature.",
+    "source": "XGtE",
+    "prerequisites": ["7th level", "Hex spell or a warlock feature that curses"]
+  },
+  {
+    "name": "Dreadful Word",
+    "description": "You can cast Confusion once using a warlock spell slot. You can't do so again until you finish a long rest.",
+    "source": "PHB",
+    "prerequisites": ["7th level"]
+  },
+  {
+    "name": "Bewitching Whispers",
+    "description": "You can cast Compulsion once using a warlock spell slot. You can't do so again until you finish a long rest.",
+    "source": "PHB",
+    "prerequisites": ["7th level"]
+  },
+  {
+    "name": "Sculptor of Flesh",
+    "description": "You can cast Polymorph once using a warlock spell slot. You can't do so again until you finish a long rest.",
+    "source": "PHB",
+    "prerequisites": ["7th level"]
+  },
+  {
+    "name": "Master of Myriad Forms",
+    "description": "You can cast Alter Self at will, without expending a spell slot.",
+    "source": "PHB",
+    "prerequisites": ["15th level"]
+  },
+  {
+    "name": "Whispers of the Grave",
+    "description": "You can cast Speak with Dead at will, without expending a spell slot.",
+    "source": "PHB",
+    "prerequisites": ["15th level"]
+  },
+  {
+    "name": "Chains of Carceri",
+    "description": "You can cast Hold Monster at will, targeting a celestial, fiend, or elemental.",
+    "source": "PHB",
+    "prerequisites": ["15th level", "Pact of the Chain feature"]
+  },
+  {
+    "name": "Shroud of Shadow",
+    "description": "You can cast Invisibility at will, without expending a spell slot.",
+    "source": "PHB",
+    "prerequisites": ["15th level"]
+  },
+  {
+    "name": "Eldritch Smite",
+    "description": "Once per turn when you hit a creature with your Pact weapon, you can expend a warlock spell slot to deal extra force damage and knock the target prone.",
+    "source": "XGtE",
+    "prerequisites": ["5th level", "Pact of the Blade feature"]
+  },
+  {
+    "name": "Lifedrinker",
+    "description": "When you hit a creature with your pact weapon, the creature takes extra necrotic damage equal to your Charisma modifier.",
+    "source": "PHB",
+    "prerequisites": ["12th level", "Pact of the Blade feature"]
+  }
+]
+

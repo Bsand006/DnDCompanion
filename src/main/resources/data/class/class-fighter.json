@@ -1845,60 +1845,10 @@
       "className": "Fighter",
       "classSource": "PHB",
       "level": 1,
-      "entries": [
-        "You adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take the same Fighting Style option more than once, even if you get to choose again.",
-        {
-          "type": "options",
-          "count": 1,
-          "entries": [
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Archery"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Defense"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Dueling"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Great Weapon Fighting"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Protection"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Two-Weapon Fighting"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Blind Fighting|TCE"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Interception|TCE"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Superior Technique|TCE"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Thrown Weapon Fighting|TCE"
-            },
-            {
-              "type": "refOptionalfeature",
-              "optionalfeature": "Unarmed Fighting|TCE"
-            }
-          ]
-        }
-      ],
       "requiresSelection": true,
+      "entries": [
+        "You adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take the same Fighting Style option more than once, even if you get to choose again."
+     ],
       "selection": {
         "type": "dropdown",
         "options": [
@@ -1926,7 +1876,7 @@
       "classSource": "PHB",
       "level": 1,
       "entries": [
-        "You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to dice 1d10} + your fighter level.",
+        "You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to dice 1d10 + your fighter level.",
         "Once you use this feature, you must finish a short or long rest before you can use it again."
       ]
     },
@@ -1985,7 +1935,7 @@
       "level": 4,
       "entries": [
         "When you reach 4th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
-        "If your DM allows the use of feats, you may instead take a feats.html."
+        "If your DM allows the use of feats, you may instead take a feat."
       ],
       "requiresSelection": true,
       "selection": {
@@ -2027,7 +1977,7 @@
       "classSource": "PHB",
       "level": 5,
       "entries": [
-        "Beginning at 5th level, you can attack twice, instead of once, whenever you take the action Attack} action on your turn.",
+        "Beginning at 5th level, you can attack twice, instead of once, whenever you take the action Attack action on your turn.",
         "The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class."
       ]
     },
@@ -2042,7 +1992,7 @@
       "level": 6,
       "entries": [
         "When you reach 6th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
-        "If your DM allows the use of feats, you may instead take a feats.html."
+        "If your DM allows the use of feats, you may instead take a feat."
       ],
       "requiresSelection": true,
       "selection": {
@@ -2078,7 +2028,7 @@
       "level": 8,
       "entries": [
         "When you reach 8th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
-        "If your DM allows the use of feats, you may instead take a feats.html."
+        "If your DM allows the use of feats, you may instead take a feat."
       ],
       "requiresSelection": true,
       "selection": {
@@ -2141,7 +2091,7 @@
       "level": 12,
       "entries": [
         "When you reach 12th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
-        "If your DM allows the use of feats, you may instead take a feats.html."
+        "If your DM allows the use of feats, you may instead take a feat."
       ],
       "requiresSelection": true,
       "selection": {
@@ -2177,7 +2127,7 @@
       "level": 14,
       "entries": [
         "When you reach 14th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
-        "If your DM allows the use of feats, you may instead take a feats.html."
+        "If your DM allows the use of feats, you may instead take a feat."
       ],
       "requiresSelection": true,
       "selection": {
@@ -2213,7 +2163,7 @@
       "level": 16,
       "entries": [
         "When you reach 16th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
-        "If your DM allows the use of feats, you may instead take a feats.html."
+        "If your DM allows the use of feats, you may instead take a feat."
       ],
       "requiresSelection": true,
       "selection": {
@@ -2275,7 +2225,7 @@
       "level": 19,
       "entries": [
         "When you reach 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
-        "If your DM allows the use of feats, you may instead take a feats.html."
+        "If your DM allows the use of feats, you may instead take a feat."
       ],
       "requiresSelection": true,
       "selection": {
@@ -2297,7 +2247,7 @@
       "classSource": "PHB",
       "level": 20,
       "entries": [
-        "At 20th level, you can attack four times whenever you take the action Attack} action on your turn."
+        "At 20th level, you can attack four times whenever you take the action Attack action on your turn."
       ]
     },
     {

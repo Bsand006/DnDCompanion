@@ -40,8 +40,8 @@ public class Controller {
 	}
 	
 	@GetMapping("/api/race")
-	public Map<String, Object> getRaceInfo(@RequestParam List<String> sources) {
+	public Map<String, Object> getRaceInfo() {
 		GetRaces getRaces = new GetRaces();
-		return null;
+		return getRaces.getRaces();
 	}
 }

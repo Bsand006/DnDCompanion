@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { rollStats as RollStats } from './dice/RollStats';
-import { getClass } from './services/apiService';
+import { getClass, getRaces } from './services/apiService';
 import './CreateSheet.css';
 import './CreateSheet2.css';
 import './CreateSheet3.css';
@@ -11,7 +11,6 @@ function CreateSheet() {
 	const navigate = useNavigate();
 
 	const [stage, setStage] = useState(1);
-
 
 	const [stats, setStats] = useState({
 		strength: 8,
@@ -25,12 +24,24 @@ function CreateSheet() {
 	const [useAverageHP, setUseAverageHP] = useState(false);
 	const [useOptionalFeatures, setUseOptionalFeatures] = useState(false);
 	const [useXP, setUseXP] = useState(false);
+	const [use2024Rules, setUse2024Rules] = useState(false);
+	const [useMercerContent, setUseMercerContent] = useState(false);
 	const [statOption, setStatOption] = useState('standard');
 	const [name, setName] = useState('');
+	const [races, setRaces] = useState([]);
+	const [race, setRace] = useState('');
 	const [Class, setClass] = useState('Artificer');
 	const [subclass, setSubclass] = useState('');
 	const [level, setLevel] = useState(1);
-	const [abilites, setAbilites] = useState([]);
+	const [abilities, setAbilities] = useState([]);
+	const [selectedChoices, setSelectedChoices] = useState([]);
+
+	useEffect(() => {
+		if (stage === 1) {
+			getRaceSelection();
+		}
+	}, [stage]);
+
 
 	useEffect(() => { // Asynchronously fetch when the stage first changes to 3
 		if (stage === 3) {
@@ -56,18 +67,45 @@ function CreateSheet() {
 
 	const [points, setPoints] = useState(27); // For point buy only
 
+	const handleAbilitySelection = (abilityName, value) => { // Set selected abilities
 
-	const handleAbilitySelection = (abilityName, selectedValue) => {
+		if (abilityName.toLowerCase().includes('subclass')) {
+			setSubclass(value); // Update the subclass state
+		}
+		const newChoices = [...selectedChoices];
 
+		const index = abilities.findIndex(ability => ability.name === abilityName);
+		if (index !== -1) {
+			newChoices[index] = value;
+			setSelectedChoices(newChoices);
+		}
 	}
 
 	const handleCheckboxSelection = (abilityName, selectedValue, isChecked, limit) => {
 
 	}
 
+	const getRaceSelection = async () => {
+		try {
+			const response = await getRaces();
+
+			const raceList = response.raceList.map((race) => ({ raceName: race.name, source: race.source }));
+			
+			console.log(raceList);
+
+			// Update the state with the entire array at once
+			setRaces(raceList);
+
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
 	const getClassAbilties = async (query) => { // Get class abilites up to selected level
 		try {
-			const response = await getClass(query, level)
+			const response = await getClass(query, level);
+
+			console.log(response);
 
 			for (let i = 0; i < response.classFeature.length; i++) {
 				const classFeature = response.classFeature[i];
@@ -77,7 +115,14 @@ function CreateSheet() {
 
 				const requiresSelection = classFeature.requiresSelection;
 
-				setAbilites((prev) => [...prev, { name: featureName, requiresSelect: requiresSelection, level: featureLevel, description: featureDescription }]);
+				let selectionType = [];
+
+				if (requiresSelection) {
+					selectionType = classFeature.selection || [];
+				}
+
+				setAbilities((prev) => [...prev, { name: featureName, requiresSelect: requiresSelection, selection: selectionType, level: featureLevel, description: featureDescription }]);
+
 			}
 
 		} catch (error) {
@@ -85,7 +130,7 @@ function CreateSheet() {
 		}
 	}
 
-	console.log(abilites);
+	console.log(abilities);
 
 	const handleStatChange = (stat, newValue) => {
 		const parsedValue = parseInt(newValue, 10);
@@ -306,6 +351,20 @@ function CreateSheet() {
 									onChange={(e) => setUseXP(e.target.checked)} />
 								Use XP?
 							</li>
+							<li>
+								<input
+									type="checkbox"
+									checked={use2024Rules}
+									onChange={(e) => setUse2024Rules(e.target.checked)} />
+								Use 2014 rules?
+							</li>
+							<li>
+								<input
+									type="checkbox"
+									checked={useMercerContent}
+									onChange={(e) => setUseMercerContent(e.target.checked)} />
+								Use Mercer content?
+							</li>
 						</ul>
 					</aside><header className="CreateSheet-header">
 							<h1>Create a Character Sheet</h1>
@@ -314,6 +373,19 @@ function CreateSheet() {
 								<input
 									type="text" placeholder="Enter a name" value={name}
 									onChange={(e) => setName(e.target.value)} />
+
+								<label htmlFor="race">Select a Race:</label>
+								<select id="race"
+									value={race}
+									onChange={(e) => setRace(e.target.value)} >
+									<option value="" disabled>Select an option</option>
+									{races.map((raceObj, i) => (
+										<option key={i} value={raceObj.raceName}>
+											{`${raceObj.raceName} (${raceObj.source})`}
+										</option>
+									))}
+								</select>
+
 
 								<label htmlFor="class">Select Class:</label>
 								<select id="class"
@@ -419,7 +491,7 @@ function CreateSheet() {
 					<h1>Assign Abilities</h1>
 					<div className="scrollable-abilities">
 						<div className="abilities-container">
-							{abilites.map((ability, index) => (
+							{abilities.map((ability, index) => (
 								<div key={index} className="ability-row">
 									<h2>{ability.name}</h2>
 									<p>Level: {ability.level}</p>
@@ -440,7 +512,7 @@ function CreateSheet() {
 										) : (
 											<p>{typeof ability.description === 'object' ? JSON.stringify(ability.description) : ability.description}</p>
 										)}
-										{ability.requiresSelect === true && ability.selection && (
+										{ability.requiresSelect && (
 											<div>
 												<label htmlFor={`selection-${index}`}>Choose an option:</label>
 
@@ -488,8 +560,8 @@ function CreateSheet() {
 			</div>
 		)
 	} else if (stage === 4) {
-		
-		
+
+
 	}
 }
 export default CreateSheet;
