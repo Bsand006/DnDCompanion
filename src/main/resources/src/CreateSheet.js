@@ -90,7 +90,7 @@ function CreateSheet() {
 			const response = await getRaces();
 
 			const raceList = response.raceList.map((race) => ({ raceName: race.name, source: race.source }));
-			
+
 			console.log(raceList);
 
 			// Update the state with the entire array at once
@@ -386,7 +386,6 @@ function CreateSheet() {
 									))}
 								</select>
 
-
 								<label htmlFor="class">Select Class:</label>
 								<select id="class"
 									value={Class}
@@ -560,7 +559,18 @@ function CreateSheet() {
 			</div>
 		)
 	} else if (stage === 4) {
-
+		<div className="CreateSheet4">
+			<header className="CreateSheet-header">
+				<h1>Select Background and Add Details</h1>
+				
+				<button type="button" onClick={() => handleNextClick()}>
+					Next
+				</button>
+				<button type="button" onClick={() => handleBackClick()}>
+					Back
+				</button>
+			</header>
+		</div>
 
 	}
 }

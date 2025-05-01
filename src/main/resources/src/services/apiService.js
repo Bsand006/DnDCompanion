@@ -38,3 +38,14 @@ export const getRaces = async () => {
 		console.error('Error fetching races:', error);
 	}
 }
+
+export const getBackground = async () => { 
+	try {
+		const response = await axios.get(`${API_URL}/background`, {
+            withCredentials: true,
+        });
+        return response.data;
+	} catch (error) {
+		console.error('Error fetching background:', error);
+	}	
+}
