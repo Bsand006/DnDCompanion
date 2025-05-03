@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { rollStats as RollStats } from './dice/RollStats';
-import { getClass, getRaces } from './services/apiService';
+import { rollDice } from './dice/RollDice';
+import { getClass, getRaces, getRace } from './services/apiService';
 import './CreateSheet.css';
 import './CreateSheet2.css';
 import './CreateSheet3.css';
@@ -28,8 +29,10 @@ function CreateSheet() {
 	const [useMercerContent, setUseMercerContent] = useState(false);
 	const [statOption, setStatOption] = useState('standard');
 	const [name, setName] = useState('');
+	const [hp, setHP] = useState(0);
 	const [races, setRaces] = useState([]);
 	const [race, setRace] = useState('');
+	const [selectedRaceDetails, setSelectedRaceDetails] = useState([]);
 	const [Class, setClass] = useState('Artificer');
 	const [subclass, setSubclass] = useState('');
 	const [level, setLevel] = useState(1);
@@ -63,7 +66,7 @@ function CreateSheet() {
 
 	const [availableValues, setAvailableValues] = useState([8, 10, 12, 13, 14, 15]); // For standard array only
 
-	const [rolledStats, setRolledStats] = useState([]) // For rolled stats only
+	const [rolledStats, setRolledStats] = useState([]); // For rolled stats only
 
 	const [points, setPoints] = useState(27); // For point buy only
 
@@ -86,19 +89,54 @@ function CreateSheet() {
 	}
 
 	const getRaceSelection = async () => {
+
 		try {
-			const response = await getRaces();
 
-			const raceList = response.raceList.map((race) => ({ raceName: race.name, source: race.source }));
+			if (useMercerContent === false) {
 
-			console.log(raceList);
+				let sources = ['EGW', 'PSK', 'MPMM', 'XPHB']
+				const response = await getRaces(sources);
 
-			// Update the state with the entire array at once
-			setRaces(raceList);
+				const raceList = response.raceList.map((race) => ({ raceName: race.name, source: race.source }));
+
+				console.log(raceList);
+
+				// Update the state with the entire array at once
+				setRaces(raceList);
+
+			} else {
+
+				let sources = ['EGW', 'PSK', 'XPHB']
+				const response = await getRaces(sources);
+
+				const raceList = response.raceList.map((race) => ({ raceName: race.name, source: race.source }));
+
+				console.log(raceList);
+
+				// Update the state with the entire array at once
+				setRaces(raceList);
+			}
 
 		} catch (error) {
 			console.error(error);
 		}
+	}
+
+	const handleRaceChange = async (raceName, source) => {
+
+		try {
+			const response = await getRace(raceName, source);
+
+			console.log(response.race.name);
+
+			setRace(raceName);
+
+			setSelectedRaceDetails([{ name: response.race.name, speed: response.race.speed, 
+				abilities: response.race.ability }]);
+		} catch (error) {
+			error.log(error);
+		}
+
 	}
 
 	const getClassAbilties = async (query) => { // Get class abilites up to selected level
@@ -130,7 +168,12 @@ function CreateSheet() {
 		}
 	}
 
-	console.log(abilities);
+	const calculateHP = (level, hitDie, constitution) => {
+
+		if (!useAverageHP) {
+			setHP(rollDice())
+		}
+	}
 
 	const handleStatChange = (stat, newValue) => {
 		const parsedValue = parseInt(newValue, 10);
@@ -377,7 +420,10 @@ function CreateSheet() {
 								<label htmlFor="race">Select a Race:</label>
 								<select id="race"
 									value={race}
-									onChange={(e) => setRace(e.target.value)} >
+									onChange={(e) => {
+										const selectedRace = races.find(r => r.raceName === e.target.value);
+										handleRaceChange(selectedRace.raceName, selectedRace.source);
+									}} >
 									<option value="" disabled>Select an option</option>
 									{races.map((raceObj, i) => (
 										<option key={i} value={raceObj.raceName}>
@@ -434,7 +480,19 @@ function CreateSheet() {
 									Next
 								</button>
 							</div>
+
 						</header></>
+					<div className="race-details-container">
+						<h2>Race Details</h2>
+						{selectedRaceDetails.length > 0 ? (
+							<div>
+								<p>{selectedRaceDetails[0].name}</p>
+								<p>{`${selectedRaceDetails[0].speed}ft`}</p>
+							</div>
+						) : (
+							<p>No race selected</p>
+						)}
+					</div>
 				</div >
 			</div >
 
@@ -488,6 +546,10 @@ function CreateSheet() {
 			<div className="CreateSheet3">
 				<header className="CreateSheet-header">
 					<h1>Assign Abilities</h1>
+					<div className="health-container">
+
+
+					</div>
 					<div className="scrollable-abilities">
 						<div className="abilities-container">
 							{abilities.map((ability, index) => (
@@ -562,9 +624,9 @@ function CreateSheet() {
 		<div className="CreateSheet4">
 			<header className="CreateSheet-header">
 				<h1>Select Background and Add Details</h1>
-				
+
 				<button type="button" onClick={() => handleNextClick()}>
-					Next
+					Submit
 				</button>
 				<button type="button" onClick={() => handleBackClick()}>
 					Back

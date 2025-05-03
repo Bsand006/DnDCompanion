@@ -21,7 +21,6 @@ import com.bsand.dndcompanion.data.ParseSpells;
 @RestController
 public class Controller {
 
-
 	@GetMapping("/api/spells")
 	public List<Map<String, Object>> getSpells(@RequestParam String query) {
 		ParseSpells parseSpells = new ParseSpells();
@@ -40,10 +39,16 @@ public class Controller {
 		
 	}
 	
-	@GetMapping("/api/race")
-	public Map<String, Object> getRaceInfo() {
+	@GetMapping("/api/races")
+	public Map<String, Object> getRaceInfo(@RequestParam List<String> sourcelist) {
 		GetRaces getRaces = new GetRaces();
-		return getRaces.getRaces();
+		return getRaces.getRaces(sourcelist);
+	}
+	
+	@GetMapping("/api/race")
+	public Map<String, Object> getRaceInfo(@RequestParam String raceName, @RequestParam String source) {
+		GetRaces getRaces = new GetRaces();
+		return getRaces.getRace(raceName, source);
 	}
 	
 	@GetMapping("/api/backgrounds")
@@ -52,5 +57,3 @@ public class Controller {
 		return backgrounds.getBackgrounds();
 	}
 }
-
-

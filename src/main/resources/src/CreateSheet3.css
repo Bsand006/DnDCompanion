@@ -16,10 +16,19 @@
 	color: rgb(0, 0, 0);
 }
 
+.health-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
 .scrollable-abilities {
-	max-height: 60vh; /* or any fixed value like 400px */
+	max-height: 60vh; 
 	overflow-y: auto;
-	padding-right: 10px; /* optional: to avoid scrollbar overlap */
+	padding-right: 10px; 
 }
 
 .abilities-container {

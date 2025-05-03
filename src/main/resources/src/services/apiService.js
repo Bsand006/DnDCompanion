@@ -28,10 +28,14 @@ export const getClass = async (className, level) => {
 	}
 }
 
-export const getRaces = async () => {
+export const getRaces = async (sources) => {
 	try {
-		const response = await axios.get(`${API_URL}/race`, {
+		const response = await axios.get(`${API_URL}/races`, {
 			withCredentials: true,
+			params: { sourcelist: sources },
+			paramsSerializer: params => {
+			    return params.sourcelist.map(source => `sourcelist=${encodeURIComponent(source)}`).join('&');
+			  }
 		});
 		return response.data;
 	} catch (error) {
@@ -39,13 +43,15 @@ export const getRaces = async () => {
 	}
 }
 
-export const getBackground = async () => { 
+export const getRace = async (raceName, source) => {
 	try {
-		const response = await axios.get(`${API_URL}/background`, {
+		const response = await axios.get(`${API_URL}/race`, {
             withCredentials: true,
+            params: { raceName, source },
         });
-        return response.data;
+		return response.data;
 	} catch (error) {
-		console.error('Error fetching background:', error);
-	}	
+		console.error('Error fetching race: ', error);
+		throw error;
+	}
 }

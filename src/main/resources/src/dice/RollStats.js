@@ -20,5 +20,4 @@ export const rollStats = () => {
     }
 	
 	return rolls
-	
 }

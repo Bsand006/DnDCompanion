@@ -15,7 +15,7 @@ public class GetRaces {
 	File file = new File("src/main/resources/data/races.json");
 
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> getRaces() {
+	public Map<String, Object> getRaces(List<String> sources) {
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, Object> raceMap = new HashMap<String, Object>();
@@ -30,16 +30,17 @@ public class GetRaces {
 			for (JsonNode race : races) {
 				// System.out.println(race.get("name").asText() + " + " +
 				// race.get("source").asText());
-				if (!race.get("source").asText().equals("XPHB") && !race.get("source").asText().equals("DMG")
-						&& !race.get("source").asText().equals("PSK") && !race.get("source").asText().equals("EGW")
-						&& !race.get("source").asText().equals("MPMM")) {
-					raceList.add(objectMapper.convertValue(race, Map.class));
+				if (sources.contains(race.get("source").asText())) {
+					continue;
 				}
+				
+				raceList.add(objectMapper.convertValue(race, Map.class));
+
 			}
 
 			raceMap.put("raceList", raceList);
 
-			return raceMap;
+			return raceMap; 
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -48,5 +49,30 @@ public class GetRaces {
 		return null;
 
 	}
+	
+	public Map<String, Object> getRace(String name, String source) {
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		Map<String, Object> raceMap = new HashMap<String, Object>();
+		
+		try {
+			JsonNode root = objectMapper.readTree(file);
+			
+			ArrayNode races = (ArrayNode) root.get("race");
+			
+			for (JsonNode race : races) {
+				if (race.get("name").asText().equals(name) && race.get("source").asText().equals(source)) {
+					raceMap.put("race", race);
+					return raceMap;
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 
 }

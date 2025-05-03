@@ -1,4 +1,4 @@
-.CreateSheet {
+it .CreateSheet {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -45,6 +45,19 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+}
+
+.race-details-container {
+	margin-left: 20px;
+	margin-right: 300px;
+	max-height: 300px;
+	margin-top: 150px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
 }
 
 button {
