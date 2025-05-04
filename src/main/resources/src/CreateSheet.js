@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { rollStats as RollStats } from './dice/RollStats';
-import { rollDice } from './dice/RollDice';
+import { rollHP } from './dice/RollHP';
 import { getClass, getRaces, getRace } from './services/apiService';
 import './CreateSheet.css';
 import './CreateSheet2.css';
@@ -30,6 +30,7 @@ function CreateSheet() {
 	const [statOption, setStatOption] = useState('standard');
 	const [name, setName] = useState('');
 	const [hp, setHP] = useState(0);
+	const [hitDice, setHitDice] = useState(6);
 	const [races, setRaces] = useState([]);
 	const [race, setRace] = useState('');
 	const [selectedRaceDetails, setSelectedRaceDetails] = useState([]);
@@ -149,14 +150,13 @@ function CreateSheet() {
 		try {
 			const response = await getClass(query, level);
 
-
 			console.log(response);
 
+			setHitDice(response.class[0].hd.faces);
+
 			for (let i = 0; i < response.classFeature.length; i++) {
-				const classFeature = response.classFeature[i];
-				const featureName = classFeature.name;
-				const featureLevel = classFeature.level;
-				const featureDescription = classFeature.entries;
+				let classFeature = response.classFeature[i];
+				let featureDescription = classFeature.entries;
 
 				const requiresSelection = classFeature.requiresSelection;
 
@@ -166,7 +166,10 @@ function CreateSheet() {
 					selectionType = classFeature.selection || [];
 				}
 
-				setAbilities((prev) => [...prev, { name: featureName, requiresSelect: requiresSelection, selection: selectionType, level: featureLevel, description: featureDescription }]);
+				setAbilities((prev) => [...prev, {
+					name: classFeature.name, requiresSelect: requiresSelection, selection: selectionType,
+					level: classFeature.level, description: featureDescription
+				}]);
 
 			}
 
@@ -182,7 +185,7 @@ function CreateSheet() {
 		if (level > 1) {
 			if (!useAverageHP) { // Use rolled HP
 				let numDice = level - 1
-				return rollDice(numDice, hitDie, conMod);
+				return rollHP(numDice, hitDie, conMod) + (hitDie + conMod);
 			} else { // Use average HP
 				let totalHP = 0;
 				for (let i = 1; i < level; i++) {
@@ -533,7 +536,7 @@ function CreateSheet() {
 	} else if (stage === 2) { // Stage 2: Assign stats
 		return (
 			<div className="CreateSheet2">
-				<header className="CreateSheet-header">
+				<header className="CreateSheet-header2">
 
 					<div className="stage">
 						<h1>Assign Stats</h1>
@@ -592,12 +595,9 @@ function CreateSheet() {
 
 		return (
 			<div className="CreateSheet3">
-				<header className="CreateSheet-header">
+				<header className="CreateSheet-header3">
 					<h1>Assign Abilities</h1>
-					<div className="health-container">
 
-
-					</div>
 					<div className="scrollable-abilities">
 						<div className="abilities-container">
 							{abilities.map((ability, index) => (
@@ -666,7 +666,12 @@ function CreateSheet() {
 						Back
 					</button>
 				</header>
-			</div>
+					<aside className="health-container">
+						<h4>Health</h4>
+						<p>HP: {calculateHP(level, hitDice, stats.constitution)}</p>
+						<p>Hit Dice: {level}d{hitDice}</p>
+					</aside>
+				</div>
 		)
 	} else if (stage === 4) {
 		<div className="CreateSheet4">

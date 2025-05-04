@@ -7,6 +7,16 @@
 	gap: 20px; 
 }
 
+.CreateSheet-header2 {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1;
+	font-size: calc(10px + 2vmin);
+	color: black;;
+}
+
 .stage {
 	text-align: center;
 	display: flex;
@@ -15,13 +25,6 @@
 	justify-content: center;
 }
 
-.stage-racial {
-	text-align: center;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-}
 
 .racial-bonus-stage {
 	margin-left: 20px;

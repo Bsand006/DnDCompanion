@@ -47,7 +47,7 @@ public class GetClassInfo {
 			}
 
 			classMap.put("classFeature", featuresList);
-			classMap.put(query, classArray);
+			classMap.put("class", classArray);
 
 			return classMap;
 

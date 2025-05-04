@@ -1,8 +1,8 @@
 /*
-Code to roll a set number and type of dice and return the the total, plus or minus a modifier.
+Code to roll a HP based on a set number and type of dice and a modifier, which is added to each roll.
 */
 
-export const rollDice = (numDice, dieType, modifier) => {
+export const rollHP = (numDice, dieType, modifier) => {
     let total = 0;
     const rolls = [];
 
@@ -11,8 +11,7 @@ export const rollDice = (numDice, dieType, modifier) => {
         rolls.push(roll);
         total += roll;
     }
-
-    total += modifier;
+    total += modifier * numDice; // Add the modifier to each roll
 	
 	console.log(`Rolled ${numDice}d${dieType} + ${modifier}: ${rolls.join(', ')} = ${total}`);
 
