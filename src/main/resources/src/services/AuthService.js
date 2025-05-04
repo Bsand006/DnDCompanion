@@ -22,10 +22,11 @@ export const login = async (username, password) => {
 
 export const signup = async (username, password) => {
 	try {
-		const response = await axios.post(`${API_URL}/signup`, new URLSearchParams({ username, password }),
+		const response = await axios.post(`${API_URL}/register`, new URLSearchParams({ username, password }),
 			{ withCredentials: true }
 		)
 
+		console.log('signup success!!!!' + response.status)
 		return response
 	} catch (error) {
 

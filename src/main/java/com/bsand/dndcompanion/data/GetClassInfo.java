@@ -31,17 +31,22 @@ public class GetClassInfo {
 			JsonNode root = objectMapper.readTree(file);
 			ArrayNode classArray = (ArrayNode) root.get("class");
 			ArrayNode classFeaturesText = (ArrayNode) root.get("classFeature");
-			
-            List<Map<String, Object>> featuresList = new ArrayList<>();
+
+			List<Map<String, Object>> featuresList = new ArrayList<>();
 
 			for (JsonNode feature : classFeaturesText) { // Put every feature below or equal to the level in the request
-				if (feature.get("level").asInt() <= level && !feature.get("source").asText().equals("XPHB") 
-						&& !feature.get("source").asText().equals("TCE")) {
-					featuresList.add(objectMapper.convertValue(feature, Map.class));
+
+				try {
+					if (feature.get("level").asInt() <= level && !feature.get("source").asText().equals("XPHB")
+							&& !feature.get("source").asText().equals("TCE")) {
+						featuresList.add(objectMapper.convertValue(feature, Map.class));
+					}
+				} catch (NullPointerException e) {
+					System.out.println("NullPointerException: " + e.getMessage());
 				}
 			}
-			
-            classMap.put("classFeature", featuresList);
+
+			classMap.put("classFeature", featuresList);
 			classMap.put(query, classArray);
 
 			return classMap;

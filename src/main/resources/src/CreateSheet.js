@@ -39,7 +39,7 @@ function CreateSheet() {
 	const [abilities, setAbilities] = useState([]);
 	const [selectedChoices, setSelectedChoices] = useState([]);
 
-	useEffect(() => {
+	useEffect(() => { // Asynchronously fetch races when the stage first changes to 1
 		if (stage === 1) {
 			getRaceSelection();
 		}
@@ -58,10 +58,14 @@ function CreateSheet() {
 
 	const handleNextClick = () => { // Go to the next stage
 		setStage((prevStage) => prevStage + 1);
+
 	}
 
 	const handleBackClick = () => { // Go to the previous stage
 		setStage((prevStage) => prevStage - 1);
+		if (stage === 3) {
+			setAbilities([]); // Clear abilities when moving to the next stage
+		}
 	}
 
 	const [availableValues, setAvailableValues] = useState([8, 10, 12, 13, 14, 15]); // For standard array only
@@ -94,7 +98,7 @@ function CreateSheet() {
 
 			if (useMercerContent === false) {
 
-				let sources = ['EGW', 'PSK', 'MPMM', 'XPHB']
+				let sources = ['EGW', 'PSK', 'MPMM', 'XPHB'];
 				const response = await getRaces(sources);
 
 				const raceList = response.raceList.map((race) => ({ raceName: race.name, source: race.source }));
@@ -106,7 +110,7 @@ function CreateSheet() {
 
 			} else {
 
-				let sources = ['EGW', 'PSK', 'XPHB']
+				let sources = ['EGW', 'PSK', 'XPHB'];
 				const response = await getRaces(sources);
 
 				const raceList = response.raceList.map((race) => ({ raceName: race.name, source: race.source }));
@@ -131,10 +135,12 @@ function CreateSheet() {
 
 			setRace(raceName);
 
-			setSelectedRaceDetails([{ name: response.race.name, speed: response.race.speed, 
-				abilities: response.race.ability }]);
+			setSelectedRaceDetails([{
+				name: response.race.name, speed: response.race.speed,
+				abilities: response.race.ability, entries: response.race.entries,
+			}]);
 		} catch (error) {
-			error.log(error);
+			console.error(error);
 		}
 
 	}
@@ -142,6 +148,7 @@ function CreateSheet() {
 	const getClassAbilties = async (query) => { // Get class abilites up to selected level
 		try {
 			const response = await getClass(query, level);
+
 
 			console.log(response);
 
@@ -170,8 +177,23 @@ function CreateSheet() {
 
 	const calculateHP = (level, hitDie, constitution) => {
 
-		if (!useAverageHP) {
-			setHP(rollDice())
+		let conMod = Math.floor((constitution - 10) / 2);
+
+		if (level > 1) {
+			if (!useAverageHP) { // Use rolled HP
+				let numDice = level - 1
+				return rollDice(numDice, hitDie, conMod);
+			} else { // Use average HP
+				let totalHP = 0;
+				for (let i = 1; i < level; i++) {
+					let average = Math.ceil((hitDie + 1) / 2) + conMod;
+					totalHP += average;
+				}
+				return totalHP
+			}
+
+		} else { // Level 1 HP
+			return Math.ceil((hitDie + 1) / 2) + conMod;
 		}
 	}
 
@@ -482,19 +504,30 @@ function CreateSheet() {
 							</div>
 
 						</header></>
-					<div className="race-details-container">
-						<h2>Race Details</h2>
-						{selectedRaceDetails.length > 0 ? (
-							<div>
-								<p>{selectedRaceDetails[0].name}</p>
-								<p>{`${selectedRaceDetails[0].speed}ft`}</p>
-							</div>
-						) : (
-							<p>No race selected</p>
-						)}
-					</div>
+					<div className="scrollable-abilities">
+						<div className="race-details-container">
+							<h2>Race Details</h2>
+							{selectedRaceDetails.length > 0 ? (
+								<div>
+									<p>{selectedRaceDetails[0].name}</p>
+									<p>{`${selectedRaceDetails[0].speed}ft`}</p>
+									{selectedRaceDetails[0].entries.map((entry, index) => (
+										<div key={index} className="race-ability">
+											<h3>{entry.name}</h3>
+											{Array.isArray(entry.entries) && entry.entries.map((subEntry, subIndex) => (
+												<p key={subIndex}>{subEntry}</p>
+											))}
+										</div>
+									))}
+
+								</div>
+							) : (
+								<p>No race selected</p>
+							)}
+						</div>
+					</div >
 				</div >
-			</div >
+			</div>
 
 		)
 	} else if (stage === 2) { // Stage 2: Assign stats
@@ -538,6 +571,21 @@ function CreateSheet() {
 						Back
 					</button>
 				</header >
+
+				<aside className="racial-bonus-stage">
+					<h2>Racial Bonuses</h2>
+					<ul>
+						{selectedRaceDetails[0].abilities.map((bonus, index) => (
+							<li key={index}>
+								{Object.entries(bonus).map(([ability, value]) => (
+									<p key={ability}>
+										<strong>{ability.toUpperCase()}:</strong> {value > 0 ? `+${value}` : value}
+									</p>
+								))}
+							</li>
+						))}
+					</ul>
+				</aside>
 			</div >
 		)
 	} else if (stage === 3) { // Stage 3: Assign Abilities
@@ -633,7 +681,6 @@ function CreateSheet() {
 				</button>
 			</header>
 		</div>
-
 	}
 }
 export default CreateSheet;

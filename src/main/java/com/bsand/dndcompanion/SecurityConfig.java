@@ -49,7 +49,7 @@ public class SecurityConfig {
 			corsConfig.setAllowCredentials(true);
 			return corsConfig;
 		})).authorizeHttpRequests(
-				authz -> authz.requestMatchers("/api/public/register").permitAll().anyRequest().authenticated())
+				authz -> authz.requestMatchers("/api/register").permitAll().anyRequest().authenticated())
 				.formLogin(form -> form.loginProcessingUrl("/api/login")
 						.successHandler((req, res, auth) -> res.setStatus(HttpServletResponse.SC_OK))
 						.failureHandler((req, res, ex) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED)))

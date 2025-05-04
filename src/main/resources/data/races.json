@@ -13698,14 +13698,12 @@
 					"type": "entries"
 				},
 				{
-					"type": "entries",
 					"name": "Alignment",
 					"entries": [
 						"Most warforged take comfort in order and discipline, tending toward law and neutrality. But some have absorbed the morality, or lack thereof, of the beings with which they served."
 					]
 				},
 				{
-					"type": "entries",
 					"name": "Size",
 					"entries": [
 						"Your size is Medium."
@@ -13716,15 +13714,10 @@
 					"name": "Constructed Resilience",
 					"entries": [
 						"You were created to have remarkable fortitude, represented by the following benefits:",
-						{
-							"type": "list",
-							"items": [
-								"You have advantage on saving throws against being {@condition poisoned}, and you have resistance to poison damage.",
-								"You don't need to eat, drink, or breathe.",
-								"You are immune to disease.",
-								"You don't need to sleep, and magic can't put you to sleep."
-							]
-						}
+						"You have advantge on saving throws against being {@condition poisoned}, and you have resistance to poison damage.",
+						"You don't need to eat, drink, or breathe.",
+						"You are immune to disease.",
+						"You don't need to sleep, and magic can't put you to sleep."
 					]
 				},
 				{
@@ -13739,14 +13732,11 @@
 					"name": "Integrated Protection",
 					"entries": [
 						"Your body has built-in defensive layers, which can be enhanced with armor:",
-						{
-							"type": "list",
-							"items": [
+						
 								"You gain a +1 bonus to Armor Class.",
 								"You can don only armor with which you have proficiency. To don armor other than a shield, you must incorporate it into your body over the course of 1 hour, during which you remain in contact with the armor. To doff armor, you must spend 1 hour removing it. You can rest while donning or doffing armor in this way.",
 								"While you live, the armor incorporated into your body can't be removed against your will."
-							]
-						}
+						
 					]
 				},
 				{
