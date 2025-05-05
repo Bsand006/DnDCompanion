@@ -3,10 +3,14 @@ package com.bsand.dndcompanion;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bsand.dndcompanion.character.CharData;
 import com.bsand.dndcompanion.data.GetBackgrounds;
 import com.bsand.dndcompanion.data.GetClassInfo;
 import com.bsand.dndcompanion.data.GetRaces;
@@ -55,5 +59,11 @@ public class Controller {
 	public List<Map<String, Object>> getBackgrounds() {
 		GetBackgrounds backgrounds = new GetBackgrounds();
 		return backgrounds.getBackgrounds();
+	}
+	
+	@PostMapping("/api/save-sheet")
+	public ResponseEntity<Void> saveCharacterSettings(@RequestBody CharData settings) {
+	    System.out.println("Received character: " + settings.getName());
+	    return ResponseEntity.ok().build();
 	}
 }

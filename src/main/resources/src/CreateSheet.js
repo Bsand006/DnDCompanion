@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { rollStats as RollStats } from './dice/RollStats';
 import { rollHP } from './dice/RollHP';
-import { getClass, getRaces, getRace } from './services/apiService';
+import { getClass, getRaces, getRace, submitCharacter } from './services/apiService';
 import './CreateSheet.css';
 import './CreateSheet2.css';
 import './CreateSheet3.css';
@@ -45,6 +45,13 @@ function CreateSheet() {
 			getRaceSelection();
 		}
 	}, [stage]);
+	
+	useEffect(() => {
+		if (stage === 3) {
+	     const hp = calculateHP(level, hitDice, stats.constitution);
+	     setHP(hp);
+		 }
+	 }, [stage, level, hitDice, stats.constitution]);
 
 
 	useEffect(() => { // Asynchronously fetch when the stage first changes to 3
@@ -181,22 +188,28 @@ function CreateSheet() {
 	const calculateHP = (level, hitDie, constitution) => {
 
 		let conMod = Math.floor((constitution - 10) / 2);
+		console.log((hitDie + 1) / 2);
 
 		if (level > 1) {
 			if (!useAverageHP) { // Use rolled HP
-				let numDice = level - 1
-				return rollHP(numDice, hitDie, conMod) + (hitDie + conMod);
+				let numDice = level - 1;
+				let rolled = rollHP(numDice, hitDie, conMod) + (hitDie + conMod);
+				setHP(rolled);
+				return rolled;
 			} else { // Use average HP
 				let totalHP = 0;
 				for (let i = 1; i < level; i++) {
 					let average = Math.ceil((hitDie + 1) / 2) + conMod;
 					totalHP += average;
 				}
-				return totalHP
+				setHP(totalHP);
+				return totalHP;
 			}
 
 		} else { // Level 1 HP
-			return Math.ceil((hitDie + 1) / 2) + conMod;
+			let lvl1HP = hitDie + conMod;
+			setHP(lvl1HP);
+			return lvl1HP;
 		}
 	}
 
@@ -337,7 +350,6 @@ function CreateSheet() {
 							value={currentValue}
 							onChange={(e) => handleStatChange(stat, e.target.value)}
 						/>
-
 					</div>
 				)
 			});
@@ -668,7 +680,7 @@ function CreateSheet() {
 				</header>
 					<aside className="health-container">
 						<h4>Health</h4>
-						<p>HP: {calculateHP(level, hitDice, stats.constitution)}</p>
+						<p>HP: {hp}</p>
 						<p>Hit Dice: {level}d{hitDice}</p>
 					</aside>
 				</div>
@@ -686,6 +698,30 @@ function CreateSheet() {
 				</button>
 			</header>
 		</div>
+	} else if (stage === 5) {
+		
+		const payload = {
+		  useAverageHP,
+		  useOptionalFeatures,
+		  useXP,
+		  use2024Rules,
+		  name,
+		  hp,
+		  hitDice,
+		  race,
+		  selectedRaceDetails,
+		  className: Class, 
+		  subclass,
+		  level,
+		  abilities,
+		  selectedChoices
+		};
+		
+		submitCharacter(payload)
+          .then((response) => {
+            console.log('Character submitted successfully:', response);
+            navigate('/view-sheet'); // Redirect to the desired page after submission
+          })
 	}
 }
 export default CreateSheet;

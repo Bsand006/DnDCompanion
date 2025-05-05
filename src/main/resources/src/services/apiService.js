@@ -55,3 +55,15 @@ export const getRace = async (raceName, source) => {
 		throw error;
 	}
 }
+
+export const submitCharacter = async (payload) => {
+	try {
+		const response = await axios.post(`${API_URL}/character`, payload, {
+            withCredentials: true,
+        });
+        return response.data;
+	} catch (error) {
+		console.error('Error submitting character:', error);
+        throw error;
+	}
+}

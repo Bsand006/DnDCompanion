@@ -1,4 +1,4 @@
-/*
+/* 
 Code to roll a HP based on a set number and type of dice and a modifier, which is added to each roll.
 */
 
