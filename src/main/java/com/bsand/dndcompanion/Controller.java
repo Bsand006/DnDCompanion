@@ -16,6 +16,7 @@ import com.bsand.dndcompanion.data.GetClassInfo;
 import com.bsand.dndcompanion.data.GetRaces;
 import com.bsand.dndcompanion.data.ParseSpells;
 
+
 /*
  * Controller class to handle incoming requests and return data.
  * 
@@ -40,7 +41,6 @@ public class Controller {
 	public Map<String, Object> getClassInfo(@RequestParam String className, @RequestParam int level) {
 		GetClassInfo getClassInfo = new GetClassInfo();
 		return getClassInfo.getClass(className, level);
-		
 	}
 	
 	@GetMapping("/api/races")

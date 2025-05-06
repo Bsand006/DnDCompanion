@@ -3,16 +3,16 @@ import axios from 'axios';
 const API_URL = process.env.REACT_APP_API_URL;
 
 export const login = async (username, password) => {
-	
-	console.log(API_URL)
+
+	console.log(API_URL);
 	try {
 		const response = await axios.post(`${API_URL}/login`, new URLSearchParams({ username, password }),
 			{ withCredentials: true }
 
 		);
-		console.log('login success!!!!' + response.status)
+		console.log('login success!!!!' + response.status);
 
-		return response
+		return response;
 
 	} catch (error) {
 
@@ -26,8 +26,8 @@ export const signup = async (username, password) => {
 			{ withCredentials: true }
 		)
 
-		console.log('signup success!!!!' + response.status)
-		return response
+		console.log('signup success!!!!' + response.status);
+		return response;
 	} catch (error) {
 
 		throw new Error('Signup Failed');
@@ -49,4 +49,5 @@ export const fetchProtectedResource = async () => {
 	} catch (error) {
 		throw new Error('Access denied');
 	}
+
 }

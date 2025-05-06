@@ -38,9 +38,15 @@ public class SecurityConfig {
 	@Value("${FRONTEND_URL}")
 	private String frontendUrl;
 
+	private final UserService userService;
+
+	public SecurityConfig(UserService userService) {
+		this.userService = userService;
+	}
+
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		
+
 		http.csrf(csrf -> csrf.disable()).cors(cors -> cors.configurationSource(request -> {
 			CorsConfiguration corsConfig = new CorsConfiguration();
 			corsConfig.setAllowedOriginPatterns(List.of(frontendUrl));
@@ -50,9 +56,11 @@ public class SecurityConfig {
 			return corsConfig;
 		})).authorizeHttpRequests(
 				authz -> authz.requestMatchers("/api/register").permitAll().anyRequest().authenticated())
-				.formLogin(form -> form.loginProcessingUrl("/api/login")
-						.successHandler((req, res, auth) -> res.setStatus(HttpServletResponse.SC_OK))
-						.failureHandler((req, res, ex) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED)))
+				.formLogin(form -> form.loginProcessingUrl("/api/login").successHandler((req, res, auth) -> {
+					String username = auth.getName();
+					userService.saveIfNew(username);
+					res.setStatus(HttpServletResponse.SC_OK);
+				}).failureHandler((req, res, ex) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED)))
 				.logout(logout -> logout.logoutUrl("/api/logout")
 						.logoutSuccessHandler((req, res, auth) -> res.setStatus(HttpServletResponse.SC_OK)));
 
