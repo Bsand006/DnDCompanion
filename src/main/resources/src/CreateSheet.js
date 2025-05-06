@@ -9,6 +9,8 @@ import './CreateSheet3.css';
 
 function CreateSheet() {
 
+	
+
 	const navigate = useNavigate();
 
 	const [stage, setStage] = useState(1);
@@ -45,13 +47,13 @@ function CreateSheet() {
 			getRaceSelection();
 		}
 	}, [stage]);
-	
+
 	useEffect(() => {
 		if (stage === 3) {
-	     const hp = calculateHP(level, hitDice, stats.constitution);
-	     setHP(hp);
-		 }
-	 }, [stage, level, hitDice, stats.constitution]);
+			const hp = calculateHP(level, hitDice, stats.constitution);
+			setHP(hp);
+		}
+	}, [stage, level, hitDice, stats.constitution]);
 
 
 	useEffect(() => { // Asynchronously fetch when the stage first changes to 3
@@ -391,6 +393,25 @@ function CreateSheet() {
 			});
 		}
 	}
+	
+	const testsubmit = async () => {
+				const payload = {
+					charName: name,
+					charHP: hp,
+					charHD: hitDice,
+					charRace: race,
+					charClass: Class,
+					charLevel: level,
+				};
+
+				console.log('attempting to submit character:', payload);
+
+				submitCharacter(payload)
+					.then((response) => {
+						console.log('Character submitted successfully:', response);
+					})
+
+			}
 
 	if (stage === 1) { // Stage 1: name, class, level, options
 		return (
@@ -671,26 +692,26 @@ function CreateSheet() {
 							))}
 						</div>
 					</div>
-					<button type="button" onClick={() => handleNextClick()}>
-						Next
+					<button type="button" onClick={() => testsubmit()}>
+						Submit
 					</button>
 					<button type="button" onClick={() => handleBackClick()}>
 						Back
 					</button>
 				</header>
-					<aside className="health-container">
-						<h4>Health</h4>
-						<p>HP: {hp}</p>
-						<p>Hit Dice: {level}d{hitDice}</p>
-					</aside>
-				</div>
+				<aside className="health-container">
+					<h4>Health</h4>
+					<p>HP: {hp}</p>
+					<p>Hit Dice: {level}d{hitDice}</p>
+				</aside>
+			</div>
 		)
 	} else if (stage === 4) {
 		<div className="CreateSheet4">
 			<header className="CreateSheet-header">
 				<h1>Select Background and Add Details</h1>
 
-				<button type="button" onClick={() => handleNextClick()}>
+				<button type="button" onClick={() => testsubmit()}>
 					Submit
 				</button>
 				<button type="button" onClick={() => handleBackClick()}>
@@ -699,22 +720,10 @@ function CreateSheet() {
 			</header>
 		</div>
 	} else if (stage === 5) {
-		
-		const payload = {
-		  name,
-		  hp,
-		  hitDice,
-		  race,
-		  className: Class, 
-		  subclass,
-		  level,
-		};
-		
-		submitCharacter(payload)
-          .then((response) => {
-            console.log('Character submitted successfully:', response);
-            navigate('/view-sheet'); // Redirect to the desired page after submission
-          })
+
+
 	}
+	
+	
 }
 export default CreateSheet;

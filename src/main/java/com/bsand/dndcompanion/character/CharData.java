@@ -1,5 +1,6 @@
 package com.bsand.dndcompanion.character;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,28 +18,37 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CharData {
-	
+
 	/**
 	 * Class to hold character data.
 	 * 
 	 * @author Brian Sand
 	 */
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long charID;
-	
+
+	@Column(name = "char_name") // This should match the database column name
 	private String charName;
+
+	@Column(name = "charhp")
 	private int charHP;
-	private int charHD;
+
+	@Column(name = "charhd")
+	private String charHD;
+
+	@Column(name = "char_race")
 	private String charRace;
+
+	@Column(name = "char_class")
 	private String charClass;
-	private String charSubclass;
+
+	@Column(name = "char_level")
 	private int charLevel;
-	
+
 	@ManyToOne
-    @JoinColumn(name = "userID", nullable = false)
-    private User user;
-	
-	
+	@JoinColumn(name = "userID", nullable = false)
+	private User user;
+
 }

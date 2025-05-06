@@ -58,7 +58,7 @@ export const getRace = async (raceName, source) => {
 
 export const submitCharacter = async (payload) => {
 	try {
-		const response = await axios.post(`${API_URL}/character`, payload, {
+		const response = await axios.post(`${API_URL}/save-character`, payload, {
             withCredentials: true,
         });
         return response.data;
