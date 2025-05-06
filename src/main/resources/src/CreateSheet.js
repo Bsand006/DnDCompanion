@@ -701,20 +701,13 @@ function CreateSheet() {
 	} else if (stage === 5) {
 		
 		const payload = {
-		  useAverageHP,
-		  useOptionalFeatures,
-		  useXP,
-		  use2024Rules,
 		  name,
 		  hp,
 		  hitDice,
 		  race,
-		  selectedRaceDetails,
 		  className: Class, 
 		  subclass,
 		  level,
-		  abilities,
-		  selectedChoices
 		};
 		
 		submitCharacter(payload)

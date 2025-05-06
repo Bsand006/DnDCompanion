@@ -5,6 +5,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bsand.dndcompanion.character.User;
 
+/**
+ * UserService class to handle user-related operations in SQL database.
+ * 
+ * @author Brian Sand
+ */
+
 @Service
 public class UserService {
 	  private final UserRepository repo;

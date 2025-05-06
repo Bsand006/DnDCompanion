@@ -19,7 +19,7 @@ import org.springframework.web.cors.CorsConfiguration;
 
 import jakarta.servlet.http.HttpServletResponse;
 
-/*
+/**
  * This configuration class authenticates users against an LDAP server.
  * 
  * @author Brian Sand
