@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bsand.dndcompanion.character.CharData;
 import com.bsand.dndcompanion.data.GetBackgrounds;
 import com.bsand.dndcompanion.data.GetClassInfo;
+import com.bsand.dndcompanion.data.GetItems;
 import com.bsand.dndcompanion.data.GetRaces;
 import com.bsand.dndcompanion.data.ParseSpells;
 
@@ -28,8 +29,8 @@ public class Controller {
 	private final CharacterService characterService;
 
 	public Controller(CharacterService characterService) {
-	        this.characterService = characterService;
-	    }
+		this.characterService = characterService;
+	}
 
 	@GetMapping("/api/spells")
 	public List<Map<String, Object>> getSpells(@RequestParam String query) {
@@ -64,6 +65,12 @@ public class Controller {
 	public List<Map<String, Object>> getBackgrounds() {
 		GetBackgrounds backgrounds = new GetBackgrounds();
 		return backgrounds.getBackgrounds();
+	}
+
+	@GetMapping("/api/base-weapons")
+	public Map<String, Object> getItems(@RequestParam String category) {
+		GetItems items = new GetItems();
+		return items.getBaseWeapons(category);
 	}
 
 	@PostMapping("/api/save-character")

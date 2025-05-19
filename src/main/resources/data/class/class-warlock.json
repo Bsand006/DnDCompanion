@@ -123,11 +123,9 @@
 				}
 			],
 			"startingProficiencies": {
-				"armor": [
-					"light"
-				],
-				"weapons": [
-					"simple"
+				"equipment": [
+					"light armor",
+					"simple weapons"
 				],
 				"skills": [
 					{
@@ -149,10 +147,10 @@
 			"startingEquipment": {
 				"additionalFromBackground": true,
 				"default": [
-					"(a) a phb and phb or (b) any items",
-					"(a) a phb or (b) an phb",
-					"(a) a phb or (b) a phb",
-					"phb, any items, and two phb"
+					"(a) a light crossbow and 20 bolts or (b) any simple weapon",
+					"(a) a component pouch or (b) an arcane focus",
+					"(a) a scholars pack or (b) a dungeoneers pack",
+					"leather armor, any simple weapon, and two daggers"
 				],
 				"goldAlternative": "4d4 \u00d7 10",
 				"defaultData": [

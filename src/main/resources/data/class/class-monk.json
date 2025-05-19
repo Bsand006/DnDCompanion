@@ -23,20 +23,12 @@
 				"dex"
 			],
 			"startingProficiencies": {
-				"weapons": [
+				"equipment": [
 					"simple",
-					"phb"
+					"shortswords"
 				],
 				"tools": [
-					"any one type of PHB or any one PHB of your choice"
-				],
-				"toolProficiencies": [
-					{
-						"anyArtisansTool": 1
-					},
-					{
-						"anyMusicalInstrument": 1
-					}
+					"any one type of artisans tools or one musical instrument"
 				],
 				"skills": [
 					{
@@ -57,9 +49,9 @@
 			"startingEquipment": {
 				"additionalFromBackground": true,
 				"default": [
-					"(a) a phb or (b) any items",
-					"(a) a phb or (b) an phb",
-					"10 phb"
+					"(a) a shortsword or (b) any simple weapon",
+					"(a) a dungeoneers pack or (b) an explorers pack",
+					"10 darts"
 				],
 				"goldAlternative": "5d4",
 				"defaultData": [

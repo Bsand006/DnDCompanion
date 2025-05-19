@@ -100,15 +100,13 @@
 				}
 			],
 			"startingProficiencies": {
-				"armor": [
-					"light"
-				],
-				"weapons": [
+				"equipment": [
+					"light",
 					"simple",
-					"phb",
-					"phb",
-					"phb",
-					"phb"
+					"hand crossbows",
+					"longswords",
+					"rapiers",
+					"shortswords"
 				],
 				"tools": [
 					"three PHB of your choice"
@@ -127,10 +125,10 @@
 			"startingEquipment": {
 				"additionalFromBackground": true,
 				"default": [
-					"(a) a phb, (b) a phb, or (c) any items",
-					"(a) a phb or (b) an phb",
-					"(a) a phb or (b) any other items",
-					"phb, and a phb"
+					"(a) a rapier, (b) a longsword, or (c) any simple weapon",
+					"(a) a diplomats pack or (b) an entertainer's pack",
+					"(a) a lute or (b) any other musical instrument",
+					"leather armor and a dagger"
 				],
 				"goldAlternative": "5d4 \u00d7 10",
 				"defaultData": [

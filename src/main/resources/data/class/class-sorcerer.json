@@ -83,12 +83,12 @@
 				}
 			],
 			"startingProficiencies": {
-				"weapons": [
-					"phb",
-					"phb",
-					"phb",
-					"phb",
-					"phb"
+				"equipment": [
+					"daggers",
+					"darts",
+					"slings",
+					"quarterstaffs",
+					"light crossbows"
 				],
 				"skills": [
 					{
@@ -109,10 +109,10 @@
 			"startingEquipment": {
 				"additionalFromBackground": true,
 				"default": [
-					"(a) a phb and phb or (b) any items",
-					"(a) a phb or (b) an phb",
-					"(a) a phb or (b) an phb",
-					"Two phb"
+					"(a) a light crossbow and 20 bolts or (b) any simple weapon",
+					"(a) a component pouch or (b) an arcane focus",
+					"(a) a dungeoneers pack or (b) an explorers pack",
+					"Two daggers"
 				],
 				"goldAlternative": "3d4 \u00d7 10",
 				"defaultData": [

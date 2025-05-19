@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
-/*
+/**
  * Class to parse the spell JSON file and return a list of spells based on a search query.
  * 
  * @author Brian Sand
@@ -21,7 +21,7 @@ public class ParseSpells {
 
 	File file = new File("src/main/resources/data/spell.json"); // Path to the JSON spell file
 
-	/*
+	/**
 	 * Method to get a list of spells based on a search query.
 	 * 
 	 * @param query The search query for the spell name.

@@ -24,18 +24,16 @@
         "int"
       ],
       "startingProficiencies": {
-        "armor": [
-          "light"
-        ],
-        "weapons": [
-          "simple",
-          "phb",
-          "phb",
-          "phb",
-          "phb"
+        "equipment": [
+          "light",
+          "simple weapons",
+          "hand crossbows",
+          "longswords",
+          "rapiers",
+          "shortswords"
         ],
         "tools": [
-          "PHB"
+          "thieves tools"
         ],
         "toolProficiencies": [
           {
@@ -66,10 +64,10 @@
       "startingEquipment": {
         "additionalFromBackground": true,
         "default": [
-          "(a) a phb or (b) a phb",
-          "(a) a phb and phb of phb or (b) a phb",
-          "(a) a phb, (b) a phb, or (c) an phb",
-          "phb, two phb, and phb"
+          "(a) a rapier or (b) a shortsword",
+          "(a) a shortsword and a quiver of 20 arrows or (b) a shortsword",
+          "(a) a burglers pack, (b) a dungeoneers, or (c) an explorers pack",
+          "leather armor, two daggers, and thieves tools"
         ],
         "goldAlternative": "4d4 \u00d7 10",
         "defaultData": [

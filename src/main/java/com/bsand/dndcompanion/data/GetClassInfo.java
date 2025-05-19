@@ -10,8 +10,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
-/*
- * GetClassInfo class to parse the JSON class files and return the data as a Map.
+/**
+ * GetClassInfo class to parse the JSON class files and return the data as a
+ * Map.
  * 
  * @author Brian Sand
  */

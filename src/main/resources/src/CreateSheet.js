@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { rollStats as RollStats } from './dice/RollStats';
 import { rollHP } from './dice/RollHP';
-import { getClass, getRaces, getRace, submitCharacter } from './services/apiService';
+import { getClass, getRaces, getRace, submitCharacter, getBaseWeapons, getBaseArmor } from './services/apiService';
 import './CreateSheet.css';
 import './CreateSheet2.css';
 import './CreateSheet3.css';
+import './CreateSheet4.css';
+import './CreateSheet5.css';
 
 function CreateSheet() {
-
-	
 
 	const navigate = useNavigate();
 
@@ -41,6 +41,12 @@ function CreateSheet() {
 	const [level, setLevel] = useState(1);
 	const [abilities, setAbilities] = useState([]);
 	const [selectedChoices, setSelectedChoices] = useState([]);
+	const [equipmentProficiencies, setEquipmentProficiencies] = useState([]);
+	const [startingEquipment, setStartingEquipment] = useState([]);
+	const [startingWeaponOptions, setStartingWeaponOptions] = useState([]);
+	const [selectedEquipment, setSelectedEquipment] = useState([]);
+	const [equipment, setEquipment] = useState([])
+	const [AC, setAC] = useState(0);
 
 	useEffect(() => { // Asynchronously fetch races when the stage first changes to 1
 		if (stage === 1) {
@@ -48,13 +54,12 @@ function CreateSheet() {
 		}
 	}, [stage]);
 
-	useEffect(() => {
+	useEffect(() => { // Asynchronously calculate HP when the stage first changes to 3
 		if (stage === 3) {
 			const hp = calculateHP(level, hitDice, stats.constitution);
 			setHP(hp);
 		}
 	}, [stage, level, hitDice, stats.constitution]);
-
 
 	useEffect(() => { // Asynchronously fetch when the stage first changes to 3
 		if (stage === 3) {
@@ -62,7 +67,44 @@ function CreateSheet() {
 		}
 	}, [stage, Class, level]);
 
-	const handleStatOptionChange = (e) => {
+	useEffect(() => {
+		if (stage === 4) {
+			let weaponProf = 'simple weapons';
+
+			for (let i = 0; i < equipmentProficiencies.length; i++) {
+				if (equipmentProficiencies[i] === 'martial weapons') {
+					weaponProf = 'martial weapons';
+					break;
+				}
+			}
+			getWeapons(weaponProf); // Get weapons based on proficiency
+		}
+	}, [stage, equipmentProficiencies]);
+
+	const getWeapons = async (category) => {
+
+		const response = await getBaseWeapons(category);
+
+		console.log('Weapons:', response.weapons);
+
+		setStartingWeaponOptions(response.weapons);
+
+		console.log('Starting Weapon Options:', startingWeaponOptions);
+	}
+
+	const handleEquipmentChange = (isChecked, equipment, counterpart) => { // Handles equipment selection in starting equipment menu
+		if (isChecked) {
+			setSelectedEquipment((prev) => [...prev, equipment].filter((item) => item !== counterpart));
+		} else {
+			setSelectedEquipment((prev) => prev.filter((item) => item !== equipment));
+		}
+	};
+
+	const addEquipment = () => { // Adds selected equipment to a constant array
+
+	};
+
+	const handleStatOptionChange = (e) => { // Sets the selected stat generation option
 		setStatOption(e.target.value);
 	}
 
@@ -163,6 +205,12 @@ function CreateSheet() {
 
 			setHitDice(response.class[0].hd.faces);
 
+			setEquipmentProficiencies(response.class[0].startingProficiencies.equipment);
+			console.log('Equipment Proficiencies:', response.class[0].startingProficiencies.equipment);
+
+			setStartingEquipment(response.class[0].startingEquipment.default);
+			console.log('Starting Equipment:', response.class[0].startingEquipment.default);
+
 			for (let i = 0; i < response.classFeature.length; i++) {
 				let classFeature = response.classFeature[i];
 				let featureDescription = classFeature.entries;
@@ -190,7 +238,6 @@ function CreateSheet() {
 	const calculateHP = (level, hitDie, constitution) => {
 
 		let conMod = Math.floor((constitution - 10) / 2);
-		console.log((hitDie + 1) / 2);
 
 		if (level > 1) {
 			if (!useAverageHP) { // Use rolled HP
@@ -269,7 +316,7 @@ function CreateSheet() {
 				[stat]: parsedValue,
 			})
 
-			setPoints(points - pointDiff)
+			setPoints(points - pointDiff);
 		} else if (statOption === 'rolled') { // rolled stats
 			if (parsedValue === prevValue) return;
 
@@ -393,25 +440,25 @@ function CreateSheet() {
 			});
 		}
 	}
-	
+
 	const testsubmit = async () => {
-				const payload = {
-					charName: name,
-					charHP: hp,
-					charHD: hitDice,
-					charRace: race,
-					charClass: Class,
-					charLevel: level,
-				};
+		const payload = {
+			charName: name,
+			charHP: hp,
+			charHD: hitDice,
+			charRace: race,
+			charClass: Class,
+			charLevel: level,
+		};
 
-				console.log('attempting to submit character:', payload);
+		console.log('attempting to submit character:', payload);
 
-				submitCharacter(payload)
-					.then((response) => {
-						console.log('Character submitted successfully:', response);
-					})
+		submitCharacter(payload)
+			.then((response) => {
+				console.log('Character submitted successfully:', response);
+			})
 
-			}
+	}
 
 	if (stage === 1) { // Stage 1: name, class, level, options
 		return (
@@ -555,7 +602,6 @@ function CreateSheet() {
 											))}
 										</div>
 									))}
-
 								</div>
 							) : (
 								<p>No race selected</p>
@@ -564,7 +610,6 @@ function CreateSheet() {
 					</div >
 				</div >
 			</div>
-
 		)
 	} else if (stage === 2) { // Stage 2: Assign stats
 		return (
@@ -692,8 +737,8 @@ function CreateSheet() {
 							))}
 						</div>
 					</div>
-					<button type="button" onClick={() => testsubmit()}>
-						Submit
+					<button type="button" onClick={() => handleNextClick()}>
+						Next
 					</button>
 					<button type="button" onClick={() => handleBackClick()}>
 						Back
@@ -707,23 +752,90 @@ function CreateSheet() {
 			</div>
 		)
 	} else if (stage === 4) {
-		<div className="CreateSheet4">
-			<header className="CreateSheet-header">
-				<h1>Select Background and Add Details</h1>
+		return (
+			<div className="CreateSheet4">
+				<header className="CreateSheet-header">
+					<h1>Select Background and Starting Equipment</h1>
 
-				<button type="button" onClick={() => testsubmit()}>
-					Submit
-				</button>
-				<button type="button" onClick={() => handleBackClick()}>
-					Back
-				</button>
-			</header>
-		</div>
+					<div className="equipment-container">
+						Choose Starting Equipment:
+						{startingEquipment.map((equipment, index) => (
+							<div key={index} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+								{equipment.toLowerCase().includes('any') ? (
+									<div>
+										<input
+											type="checkbox"
+											id={`equipment-checkbox-${index}`}
+											value={equipment}
+											checked={selectedEquipment.includes(equipment)}
+											onChange={(e) => handleEquipmentChange(e.target.checked, equipment, null)}
+										/>
+										<label htmlFor={`equipment-checkbox-${index}`}>{equipment}</label>
+
+										<select
+											id={`dropdown-${index}`}
+											onChange={(e) => handleEquipmentChange(true, e.target.value, null)}
+										>
+											<option value="" disabled>Select an option</option>
+											{startingWeaponOptions.map((option, optionIndex) => (
+												<option key={optionIndex} value={option.name}>{option.name}</option>
+											))}
+										</select>
+									</div>
+								) : (
+									equipment.split(' or ').map((option, optionIndex, array) => (
+										<div key={optionIndex}>
+											<input
+												type="checkbox"
+												id={`equipment-${index}-${optionIndex}`}
+												value={option.trim()}
+												checked={selectedEquipment.includes(option.trim())}
+												onChange={(e) =>
+													handleEquipmentChange(
+														e.target.checked,
+														option.trim(),
+														array.find((item) => item !== option.trim())
+													)
+												}
+											/>
+											<label htmlFor={`equipment-${index}-${optionIndex}`}>{option.trim()}</label>
+										</div>
+									))
+								)}
+							</div>
+						))}
+
+
+					</div>
+
+					<button type="button" onClick={() => addEquipment()}>
+						Add Equipment
+					</button>
+
+					<button type="button" onClick={() => handleNextClick()}>
+						Next
+					</button>
+					<button type="button" onClick={() => handleBackClick()}>
+						Back
+					</button>
+				</header>
+			</div>
+		)
 	} else if (stage === 5) {
-
-
+		return (
+			<div className="CreateSheet5">
+				<header className="CreateSheet-header4">
+					<h1>Review Your Sheet</h1>
+					<button type="button" onClick={() => testsubmit()}>
+						Submit
+					</button>
+					<button type="button" onClick={() => handleBackClick()}>
+						back
+					</button>
+				</header>
+			</div>
+		)
 	}
-	
-	
 }
+
 export default CreateSheet;

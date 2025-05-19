@@ -50,28 +50,23 @@
 				4
 			],
 			"startingProficiencies": {
-				"armor": [
+				"equipment": [
 					"light",
 					"medium",
-					{
-						"proficiency": "shield",
-						"full": "shields (druids will not wear armor or use shields made of metal)"
-					}
-				],
-				"weapons": [
-					"phb",
-					"phb",
-					"phb",
-					"phb",
-					"phb",
-					"phb",
-					"phb",
-					"phb",
-					"phb",
-					"phb"
+				    "shields (druids will not wear armor or use shields made of metal)",
+					"clubs",
+					"daggers",
+					"darts",
+					"javelins",
+					"maces",
+					"quarterstaffs",
+					"scimitars",
+					"sickles",
+					"slings",
+					"spears"
 				],
 				"tools": [
-					"PHB"
+					"Herbalism kit"
 				],
 				"toolProficiencies": [
 					{
@@ -99,9 +94,9 @@
 			"startingEquipment": {
 				"additionalFromBackground": true,
 				"default": [
-					"(a) a wooden shield(phb) or (b) any simple weapon",
-					"(a) a scimitar(phb) or (b) any simple weapon",
-					"leather armor(phb), an explorers pack(phb), and a druidic focus(phb)"
+					"(a) a wooden shield or (b) any simple weapon",
+					"(a) a scimitar or (b) any simple weapon",
+					"leather armor, an explorers pack, and a druidic focus"
 				],
 				"goldAlternative": "2d4 \u00d7 10",
 				"defaultData": [

@@ -23,12 +23,10 @@
 				"con"
 			],
 			"startingProficiencies": {
-				"armor": [
+				"equipment": [
 					"light",
 					"medium",
-					"shield"
-				],
-				"weapons": [
+					"shield",
 					"simple",
 					"martial"
 				],
@@ -51,9 +49,9 @@
 			"startingEquipment": {
 				"additionalFromBackground": true,
 				"default": [
-					"(a) a phb or (b) any items",
-					"(a) two phb or (b) any items",
-					"An phb, and four phb"
+					"(a) a greataxe or (b) any martial melee weapon",
+					"(a) two handaxes or (b) any simple weapon",
+					"An explorer's pack and four javelins"
 				],
 				"goldAlternative": "2d4 \u00d7 10",
 				"defaultData": [

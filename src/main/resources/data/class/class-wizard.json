@@ -73,12 +73,12 @@
       ],
       "spellsKnownProgressionFixedAllowLowerLevel": true,
       "startingProficiencies": {
-        "weapons": [
-          "phb",
-          "phb",
-          "phb",
-          "phb",
-          "phb"
+        "equipment": [
+          "daggers",
+          "darts",
+          "slings",
+          "quarterstaffs",
+          "light crossbows"
         ],
         "skills": [
           {
@@ -99,10 +99,10 @@
       "startingEquipment": {
         "additionalFromBackground": true,
         "default": [
-          "(a) a phb or (b) a phb",
-          "(a) a phb or (b) an phb",
-          "(a) a phb or (b) an phb",
-          "A phb"
+          "(a) a quarterstaff or (b) a dagger",
+          "(a) a component pouch or (b) an arcane focus",
+          "(a) a scholars pack or (b) an explorer's pack",
+          "A spellbook"
         ],
         "goldAlternative": "4d4 \u00d7 10",
         "defaultData": [

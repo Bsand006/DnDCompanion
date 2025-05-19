@@ -38,15 +38,13 @@
         }
       ],
       "startingProficiencies": {
-        "armor": [
-          "light",
-          "medium",
-          "heavy",
-          "shield"
-        ],
-        "weapons": [
-          "simple",
-          "martial"
+        "equipment": [
+          "light armor",
+          "medium armor",
+          "heavy armor",
+          "shields",
+          "simple weapons",
+          "martial weapons"
         ],
         "skills": [
           {
@@ -67,56 +65,10 @@
       "startingEquipment": {
         "additionalFromBackground": true,
         "default": [
-          "(a) a items and a phb or (b) two items",
-          "(a) five phb or (b) any items",
-          "(a) a phb or (b) an phb",
-          "phb and a phb"
-        ],
-        "goldAlternative": "5d4 \u00d7 10",
-        "defaultData": [
-          {
-            "a": [
-              {
-                "equipmentType": "weaponMartial"
-              },
-              "shield|phb"
-            ],
-            "b": [
-              {
-                "equipmentType": "weaponMartial",
-                "quantity": 2
-              }
-            ]
-          },
-          {
-            "a": [
-              {
-                "item": "javelin|phb",
-                "quantity": 5
-              }
-            ],
-            "b": [
-              {
-                "equipmentType": "weaponSimpleMelee"
-              }
-            ]
-          },
-          {
-            "a": [
-              "priest's pack|phb"
-            ],
-            "b": [
-              "explorer's pack|phb"
-            ]
-          },
-          {
-            "_": [
-              "Chain mail|phb",
-              {
-                "equipmentType": "focusSpellcastingHoly"
-              }
-            ]
-          }
+          "(a) a martial weapon and a shield or (b) two martial weapons",
+          "(a) five javelins or (b) any simple melee weapon",
+          "(a) a priests pack or (b) an explorers pack",
+          "chain mail and a holy symbol"
         ]
       },
       "multiclassing": {

@@ -35,13 +35,11 @@
         }
       ],
       "startingProficiencies": {
-        "armor": [
+        "equipment": [
           "light",
           "medium",
           "heavy",
-          "shield"
-        ],
-        "weapons": [
+          "shield",
           "simple",
           "martial"
         ],
@@ -66,10 +64,10 @@
       "startingEquipment": {
         "additionalFromBackground": true,
         "default": [
-          "(a) phb or (b) phb, phb, and phb",
-          "(a) a items and a phb or (b) two items",
-          "(a) a phb and phb or (b) two phb",
-          "(a) a phb or (b) an phb"
+          "(a) chain mail or (b) leather armor, longbow, and 20 arrows",
+          "(a) a martial weapon and a shield or (b) two martial weapons",
+          "(a) a light crossbow and 20 bolts or (b) two handaxes",
+          "(a) a dungeoneers pack or (b) an explorers pack"
         ],
         "goldAlternative": "5d4 \u00d7 10",
         "defaultData": [

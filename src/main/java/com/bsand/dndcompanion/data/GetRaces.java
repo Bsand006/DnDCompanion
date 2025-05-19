@@ -28,8 +28,6 @@ public class GetRaces {
 			List<Map<String, Object>> raceList = new ArrayList<>();
 
 			for (JsonNode race : races) {
-				// System.out.println(race.get("name").asText() + " + " +
-				// race.get("source").asText());
 				if (sources.contains(race.get("source").asText())) {
 					continue;
 				}

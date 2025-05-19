@@ -86,7 +86,7 @@
 			"arrow": true,
 			"entries": [
 				"Arrows are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
-				"Arrows are typically stored in a {@item Quiver|XPHB} (bought separately)."
+				"Arrows are typically stored in a Quiver|XPHB (bought separately)."
 			]
 		},
 		{
@@ -123,7 +123,7 @@
 			"arrow": true,
 			"entries": [
 				"Arrows are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
-				"Arrows are typically stored in a {@item Quiver|XPHB} (bought separately)."
+				"Arrows are typically stored in a Quiver|XPHB (bought separately)."
 			],
 			"packContents": [
 				{
@@ -253,7 +253,7 @@
 							"name": "Utilize:",
 							"type": "item",
 							"entries": [
-								"Play a known tune ({@dc 10}), or improvise a song ({@dc 15})"
+								"Play a known tune (10), or improvise a song (15)"
 							]
 						}
 					]
@@ -315,7 +315,7 @@
 			"type": "INS",
 			"rarity": "none",
 			"entries": [
-				"Pan pipes or satyr pipes, also known as the shalm, these are sacred to {@deity Lliira|Faerûnian|scag} and popular with wood elf and wild elf bards."
+				"Pan pipes or satyr pipes, also known as the shalm, these are sacred to Lliira|Faerûnian|scag and popular with wood elf and wild elf bards."
 			]
 		},
 		{
@@ -418,7 +418,7 @@
 			"bolt": true,
 			"entries": [
 				"Crossbow bolts are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
-				"Bolts are typically stored in a {@item Crossbow Bolt Case|XPHB} (bought separately)."
+				"Bolts are typically stored in a Crossbow Bolt Case|XPHB (bought separately)."
 			]
 		},
 		{
@@ -433,7 +433,7 @@
 			"bolt": true,
 			"entries": [
 				"Crossbow bolts are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
-				"Bolts are typically stored in a {@item Crossbow Bolt Case|XPHB} (bought separately)."
+				"Bolts are typically stored in a Crossbow Bolt Case|XPHB (bought separately)."
 			],
 			"packContents": [
 				{
@@ -781,7 +781,7 @@
 					"type": "entries",
 					"name": "Special",
 					"entries": [
-						"If you attack with a double-bladed scimitar as part of the {@action Attack} action on your turn, you can use a bonus action immediately after to make a melee attack with it. This attack deals {@dice 1d4} slashing damage on a hit, instead of {@dice 2d4}."
+						"If you attack with a double-bladed scimitar as part of the Attack action on your turn, you can use a bonus action immediately after to make a melee attack with it. This attack deals 1d4 slashing damage on a hit, instead of 2d4."
 					]
 				}
 			],
@@ -828,7 +828,7 @@
 							"name": "Utilize:",
 							"type": "item",
 							"entries": [
-								"Play a known tune ({@dc 10}), or improvise a song ({@dc 15})"
+								"Play a known tune (10), or improvise a song (15)"
 							]
 						}
 					]
@@ -876,7 +876,7 @@
 							"name": "Utilize:",
 							"type": "item",
 							"entries": [
-								"Play a known tune ({@dc 10}), or improvise a song ({@dc 15})"
+								"Play a known tune (10), or improvise a song (15)"
 							]
 						}
 					]
@@ -924,7 +924,7 @@
 			"bulletFirearm": true,
 			"entries": [
 				"The ammunition of a firearm is destroyed upon use.",
-				"Firearm Bullets are typically stored in a {@item Pouch|XPHB} (bought separately)."
+				"Firearm Bullets are typically stored in a Pouch|XPHB (bought separately)."
 			],
 			"miscTags": [
 				"CNS"
@@ -942,7 +942,7 @@
 			"bulletFirearm": true,
 			"entries": [
 				"The ammunition of a firearm is destroyed upon use.",
-				"Firearm Bullets are typically stored in a {@item Pouch|XPHB} (bought separately)."
+				"Firearm Bullets are typically stored in a Pouch|XPHB (bought separately)."
 			],
 			"packContents": [
 				{
@@ -1033,7 +1033,7 @@
 							"name": "Utilize:",
 							"type": "item",
 							"entries": [
-								"Play a known tune ({@dc 10}), or improvise a song ({@dc 15})"
+								"Play a known tune (10), or improvise a song (15)"
 							]
 						}
 					]
@@ -1547,7 +1547,7 @@
 			"dmgType": "P",
 			"weapon": true,
 			"entries": [
-				"On a hit with this weapon, the wielder can forgo dealing damage and attempt to trip the target, in which case the target must succeed on a Strength saving throw or fall {@condition prone}. The DC is 8 + the wielder's Strength modifier + the wielder's proficiency bonus."
+				"On a hit with this weapon, the wielder can forgo dealing damage and attempt to trip the target, in which case the target must succeed on a Strength saving throw or fall prone. The DC is 8 + the wielder's Strength modifier + the wielder's proficiency bonus."
 			]
 		},
 		{
@@ -1575,7 +1575,7 @@
 					"type": "entries",
 					"name": "Special",
 					"entries": [
-						"When you make a melee attack with this weapon, you ignore its ammunition property. You can use the hoopak as a martial ranged weapon. If you do, it uses the ammunition property, uses sling bullets, and deals {@damage 1d4} bludgeoning damage on a hit."
+						"When you make a melee attack with this weapon, you ignore its ammunition property. You can use the hoopak as a martial ranged weapon. If you do, it uses the ammunition property, uses sling bullets, and deals 1d4 bludgeoning damage on a hit."
 					]
 				}
 			],
@@ -1623,7 +1623,7 @@
 							"name": "Utilize:",
 							"type": "item",
 							"entries": [
-								"Play a known tune ({@dc 10}), or improvise a song ({@dc 15})"
+								"Play a known tune (10), or improvise a song (15)"
 							]
 						}
 					]
@@ -2209,7 +2209,7 @@
 							"name": "Utilize:",
 							"type": "item",
 							"entries": [
-								"Play a known tune ({@dc 10}), or improvise a song ({@dc 15})"
+								"Play a known tune (10), or improvise a song (15)"
 							]
 						}
 					]
@@ -2257,7 +2257,7 @@
 							"name": "Utilize:",
 							"type": "item",
 							"entries": [
-								"Play a known tune ({@dc 10}), or improvise a song ({@dc 15})"
+								"Play a known tune (10), or improvise a song (15)"
 							]
 						}
 					]
@@ -2489,7 +2489,7 @@
 			"needleBlowgun": true,
 			"entries": [
 				"Blowgun needles are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
-				"Needles are typically stored in a {@item Pouch|XPHB} (bought separately)."
+				"Needles are typically stored in a Pouch|XPHB (bought separately)."
 			]
 		},
 		{
@@ -2504,7 +2504,7 @@
 			"needleBlowgun": true,
 			"entries": [
 				"Blowgun needles are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
-				"Needles are typically stored in a {@item Pouch|XPHB} (bought separately)."
+				"Needles are typically stored in a Pouch|XPHB (bought separately)."
 			],
 			"packContents": [
 				{
@@ -2543,7 +2543,7 @@
 					"type": "entries",
 					"name": "Special",
 					"entries": [
-						"A Large or smaller creature hit by a net is {@condition restrained} until it is freed. A net has no effect on creatures that are formless, or creatures that are Huge or larger. A creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the net (AC 10) also frees the creature without harming it, ending the effect and destroying the net. When you use an action, bonus action, or reaction to attack with a net, you can make only one attack regardless of the number of attacks you can normally make."
+						"A Large or smaller creature hit by a net is restrained until it is freed. A net has no effect on creatures that are formless, or creatures that are Huge or larger. A creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the net (AC 10) also frees the creature without harming it, ending the effect and destroying the net. When you use an action, bonus action, or reaction to attack with a net, you can make only one attack regardless of the number of attacks you can normally make."
 					]
 				}
 			]
@@ -2652,7 +2652,7 @@
 							"name": "Utilize:",
 							"type": "item",
 							"entries": [
-								"Play a known tune ({@dc 10}), or improvise a song ({@dc 15})"
+								"Play a known tune (10), or improvise a song (15)"
 							]
 						}
 					]
@@ -3209,7 +3209,7 @@
 							"name": "Utilize:",
 							"type": "item",
 							"entries": [
-								"Play a known tune ({@dc 10}), or improvise a song ({@dc 15})"
+								"Play a known tune (10), or improvise a song (15)"
 							]
 						}
 					]
@@ -3519,7 +3519,7 @@
 			"bulletSling": true,
 			"entries": [
 				"Sling bullets are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
-				"Sling Bullets are typically stored in a {@item Pouch|XPHB} (bought separately)."
+				"Sling Bullets are typically stored in a Pouch|XPHB (bought separately)."
 			]
 		},
 		{
@@ -3556,7 +3556,7 @@
 			"bulletSling": true,
 			"entries": [
 				"Sling bullets are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
-				"Sling Bullets are typically stored in a {@item Pouch|XPHB} (bought separately)."
+				"Sling Bullets are typically stored in a Pouch|XPHB (bought separately)."
 			],
 			"packContents": [
 				{
@@ -3878,7 +3878,7 @@
 							"name": "Utilize:",
 							"type": "item",
 							"entries": [
-								"Play a known tune ({@dc 10}), or improvise a song ({@dc 15})"
+								"Play a known tune (10), or improvise a song (15)"
 							]
 						}
 					]
@@ -4272,7 +4272,7 @@
 					"type": "entries",
 					"name": "Burst Fire",
 					"entries": [
-						"As an action, you can expend 10 pieces of a Burst Fire weapon's ammunition to spray shots in a 10-foot {@variantrule Cube [Area of Effect]|XPHB|Cube} within the weapon's normal range. Each creature in that area must succeed on a {@dc 15} Dexterity saving throw or take damage. Roll the weapon's damage once, and apply it to each creature that failed the save."
+						"As an action, you can expend 10 pieces of a Burst Fire weapon's ammunition to spray shots in a 10-foot Cube [Area of Effect]|XPHB|Cube within the weapon's normal range. Each creature in that area must succeed on a 15 Dexterity saving throw or take damage. Roll the weapon's damage once, and apply it to each creature that failed the save."
 					]
 				}
 			]
@@ -4288,7 +4288,7 @@
 					"name": "Extended Reach",
 					"page": 195,
 					"entries": [
-						"This weapon adds {{item.reach}} feet to your reach when you attack with it. This property also determines your reach for {@action opportunity attack|PHB|opportunity attacks} with an Extended Reach weapon."
+						"This weapon adds {{item.reach}} feet to your reach when you attack with it. This property also determines your reach for opportunity attack|PHB|opportunity attacks with an Extended Reach weapon."
 					]
 				}
 			]
@@ -4356,7 +4356,7 @@
 					"type": "entries",
 					"name": "Heavy",
 					"entries": [
-						"You have {@variantrule Disadvantage|XPHB} on attack rolls with a Heavy weapon if it's a Melee weapon and your Strength score isn't at least 13 or if it's a Ranged weapon and your Dexterity score isn't at least 13."
+						"You have Disadvantage|XPHB on attack rolls with a Heavy weapon if it's a Melee weapon and your Strength score isn't at least 13 or if it's a Ranged weapon and your Dexterity score isn't at least 13."
 					]
 				}
 			]
@@ -4390,7 +4390,7 @@
 					"type": "entries",
 					"name": "Light",
 					"entries": [
-						"When you take the {@action Attack|XPHB} action on your turn and attack with a Light weapon, you can make one extra attack as a {@variantrule Bonus Action|XPHB} later on the same turn. That extra attack must be made with a different Light weapon, and you don't add your ability modifier to the extra attack's damage unless that modifier is negative. For example, you can attack with a {@item Shortsword|XPHB} in one hand and a {@item Dagger|XPHB} in the other using the {@action Attack|XPHB} action and a {@variantrule Bonus Action|XPHB}, but you don't add your Strength or Dexterity modifier to the damage roll of the {@variantrule Bonus Action|XPHB} unless that modifier is negative."
+						"When you take the Attack|XPHB action on your turn and attack with a Light weapon, you can make one extra attack as a Bonus Action|XPHB later on the same turn. That extra attack must be made with a different Light weapon, and you don't add your ability modifier to the extra attack's damage unless that modifier is negative. For example, you can attack with a Shortsword|XPHB in one hand and a Dagger|XPHB in the other using the Attack|XPHB action and a Bonus Action|XPHB, but you don't add your Strength or Dexterity modifier to the damage roll of the Bonus Action|XPHB unless that modifier is negative."
 					]
 				}
 			]
@@ -4424,7 +4424,7 @@
 					"type": "entries",
 					"name": "Loading",
 					"entries": [
-						"You can fire only one piece of ammunition from a Loading weapon when you use an action, a {@variantrule Bonus Action|XPHB}, or a {@variantrule Reaction|XPHB} to fire it, regardless of the number of attacks you can normally make."
+						"You can fire only one piece of ammunition from a Loading weapon when you use an action, a Bonus Action|XPHB, or a Reaction|XPHB to fire it, regardless of the number of attacks you can normally make."
 					]
 				}
 			]
@@ -4491,7 +4491,7 @@
 					"type": "entries",
 					"name": "Reload",
 					"entries": [
-						"You can make a limited number of shots with a Reload weapon. You must then reload the weapon as an action or a {@variantrule Bonus Action|XPHB}."
+						"You can make a limited number of shots with a Reload weapon. You must then reload the weapon as an action or a Bonus Action|XPHB."
 					]
 				}
 			]
@@ -4582,7 +4582,7 @@
 					"name": "Vestige of Divergence",
 					"page": 200,
 					"entries": [
-						"{@note This item is a Vestige of Divergence, see {@book Tal'Dorei Treasures|TDCSR|5|Vestiges of Divergence} for more information.}"
+						"This item is a Vestige of Divergence, see {@book Tal'Dorei Treasures|TDCSR|5|Vestiges of Divergence for more information.}"
 					]
 				}
 			]
@@ -4726,7 +4726,7 @@
 			"freeRules2024": true,
 			"entries": [
 				"Artisan's Tools are each focused on crafting items and pursuing a trade. Each type of Artisan's Tools tools requires a separate proficiency.",
-				"If you have proficiency with a tool, add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to any ability check you make that uses the tool. If you have proficiency in a skill that's used with that check, you have {@variantrule Advantage|XPHB} on the check too."
+				"If you have proficiency with a tool, add your Proficiency|XPHB|Proficiency Bonus to any ability check you make that uses the tool. If you have proficiency in a skill that's used with that check, you have Advantage|XPHB on the check too."
 			]
 		},
 		{
@@ -4795,7 +4795,7 @@
 			"page": 221,
 			"freeRules2024": true,
 			"entries": [
-				"If you have proficiency with a tool, add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to any ability check you make that uses the tool. If you have proficiency in a skill that's used with that check, you have {@variantrule Advantage|XPHB} on the check too."
+				"If you have proficiency with a tool, add your Proficiency|XPHB|Proficiency Bonus to any ability check you make that uses the tool. If you have proficiency in a skill that's used with that check, you have Advantage|XPHB on the check too."
 			]
 		},
 		{
@@ -4826,7 +4826,7 @@
 			"source": "TDCSR",
 			"page": 85,
 			"entriesTemplate": [
-				"{@note This item is an illegal drug; see {@variantrule Illegal Drugs|TDCSR} for more information.}"
+				"This item is an illegal drug; see {@variantrule Illegal Drugs|TDCSR for more information.}"
 			]
 		},
 		{
@@ -4848,7 +4848,7 @@
 			"page": 221,
 			"freeRules2024": true,
 			"entries": [
-				"If you have proficiency with a tool, add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to any ability check you make that uses the tool. If you have proficiency in a skill that's used with that check, you have {@variantrule Advantage|XPHB} on the check too."
+				"If you have proficiency with a tool, add your Proficiency|XPHB|Proficiency Bonus to any ability check you make that uses the tool. If you have proficiency in a skill that's used with that check, you have Advantage|XPHB on the check too."
 			]
 		},
 		{
@@ -4966,7 +4966,7 @@
 					"type": "entries",
 					"name": "Range",
 					"entries": [
-						"A Range weapon has a range in parentheses after the Ammunition or Thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second is the weapon's long range. When attacking a target beyond normal range, you have {@variantrule Disadvantage|XPHB} on the attack roll. You can't attack a target beyond the long range."
+						"A Range weapon has a range in parentheses after the Ammunition or Thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second is the weapon's long range. When attacking a target beyond normal range, you have Disadvantage|XPHB on the attack roll. You can't attack a target beyond the long range."
 					]
 				}
 			]
@@ -5098,7 +5098,7 @@
 					"type": "entries",
 					"name": "Crew",
 					"entries": [
-						"A ship larger than a Keelboat or Rowboat needs a crew of skilled hirelings (see \"{@book Services|XPHB|6|Services}\") to function. The minimum number of skilled hirelings needed to crew a ship depends on the type of ship."
+						"A ship larger than a Keelboat or Rowboat needs a crew of skilled hirelings (see \"Services|XPHB|6|Services\") to function. The minimum number of skilled hirelings needed to crew a ship depends on the type of ship."
 					]
 				},
 				{
@@ -5112,14 +5112,14 @@
 					"type": "entries",
 					"name": "Damage Threshold",
 					"entries": [
-						"See the {@variantrule Damage Threshold|XPHB|rules glossary}."
+						"See the Damage Threshold|XPHB|rules glossary."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Ship Repair",
 					"entries": [
-						"Repairs to a damaged ship can be made while the vessel is berthed. Repairing 1 {@variantrule Hit Points|XPHB|Hit Point} of damage requires 1 day and costs 20 GP for materials and labor. If the repairs are made in a location where supplies and skilled labor are abundant, such as a city shipyard, the repair time and cost are halved."
+						"Repairs to a damaged ship can be made while the vessel is berthed. Repairing 1 Hit Points|XPHB|Hit Point of damage requires 1 day and costs 20 GP for materials and labor. If the repairs are made in a location where supplies and skilled labor are abundant, such as a city shipyard, the repair time and cost are halved."
 					]
 				}
 			]
@@ -5146,7 +5146,7 @@
 			"page": 220,
 			"freeRules2024": true,
 			"entries": [
-				"If you have proficiency with a tool, add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to any ability check you make that uses the tool. If you have proficiency in a skill that's used with that check, you have {@variantrule Advantage|XPHB} on the check too."
+				"If you have proficiency with a tool, add your Proficiency|XPHB|Proficiency Bonus to any ability check you make that uses the tool. If you have proficiency in a skill that's used with that check, you have Advantage|XPHB on the check too."
 			]
 		},
 		{
@@ -5371,7 +5371,7 @@
 			"name": "Armor of Resistance",
 			"source": "XDMG",
 			"entriesTemplate": [
-				"You have {@variantrule Resistance|XPHB} to {{getFullImmRes item.resist}} damage while you wear this armor."
+				"You have Resistance|XPHB to {{getFullImmRes item.resist}} damage while you wear this armor."
 			]
 		},
 		{
@@ -5380,7 +5380,7 @@
 			"entriesTemplate": [
 				"While this rose is held, it {{item.detail1}} as a harmless visual effect.",
 				"While holding the rose by its stem, you gain resistance to {{item.resist}} damage. If you would take more than 10 {{item.resist}} damage from a single source (after applying the resistance), the rose disintegrates, and you take no damage instead.",
-				"As an action, you can blow the petals from the rose to produce a 20-foot cone of {{item.resist}}. Each creature in the cone must make a DC 15 Constitution saving throw, taking {@damage 3d10} {{item.resist}} damage on a failed save, or half as much damage on a successful one. Using this property destroys the rose."
+				"As an action, you can blow the petals from the rose to produce a 20-foot cone of {{item.resist}}. Each creature in the cone must make a DC 15 Constitution saving throw, taking 3d10 {{item.resist}} damage on a failed save, or half as much damage on a successful one. Using this property destroys the rose."
 			]
 		},
 		{
@@ -5388,8 +5388,8 @@
 			"source": "XDMG",
 			"entriesTemplate": [
 				"Dragon Scale Mail is made of the scales of one kind of dragon. Sometimes dragons collect their cast-off scales and gift them. Other times, hunters carefully preserve the hide of a dead dragon. In either case, Dragon Scale Mail is highly valued.",
-				"While wearing this armor, you gain a +1 bonus to {@variantrule Armor Class|XPHB}, you have {@variantrule Advantage|XPHB} on saving throws against the breath weapons of Dragons, and you have {@variantrule Resistance|XPHB} to {{getFullImmRes item.resist}} damage.",
-				"Additionally, you can focus your senses as a {@action Magic|XPHB} action to discern the distance and direction to the closest {{item.detail1}} dragon within 30 miles of yourself. This action can't be used again until the next dawn."
+				"While wearing this armor, you gain a +1 bonus to Armor Class|XPHB, you have Advantage|XPHB on saving throws against the breath weapons of Dragons, and you have Resistance|XPHB to {{getFullImmRes item.resist}} damage.",
+				"Additionally, you can focus your senses as a Magic|XPHB action to discern the distance and direction to the closest {{item.detail1}} dragon within 30 miles of yourself. This action can't be used again until the next dawn."
 			]
 		},
 		{
@@ -5403,17 +5403,17 @@
 			"name": "Grenade",
 			"source": "XDMG",
 			"entriesTemplate": [
-				"As an action, you can either throw a grenade at a point up to 60 feet away or use a Grenade Launcher to propel the grenade to a point up to 1,000 feet away. The grenade explodes at that point, creating a particular effect in a 20-foot-radius {@variantrule Sphere [Area of Effect]|XPHB|Sphere}."
+				"As an action, you can either throw a grenade at a point up to 60 feet away or use a Grenade Launcher to propel the grenade to a point up to 1,000 feet away. The grenade explodes at that point, creating a particular effect in a 20-foot-radius Sphere [Area of Effect]|XPHB|Sphere."
 			]
 		},
 		{
 			"name": "Ioun Stone",
 			"source": "XDMG",
 			"entriesTemplate": [
-				"Roughly marble sized, {@i Ioun Stones} are named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@i Ioun Stones} exist, each type a distinct combination of shape and color.",
-				"When you take a {@action Magic|XPHB} action to toss an {@i Ioun Stone} into the air, the stone orbits your head at a distance of {@dice 1d3} feet, conferring its benefit to you while doing so. You can have up to three {@i Ioun Stones} orbiting your head at the same time.",
-				"Each {@i Ioun Stone} orbiting your head is considered to be an object you are wearing. The orbiting stone avoids contact with other creatures and objects, adjusting its orbit to avoid collisions and thwarting all attempts by other creatures to attack or snatch it.",
-				"As a {@action Utilize|XPHB} action, you can seize and stow any number of {@i Ioun Stones} orbiting your head. If your {@variantrule Attunement|XPHB} to an Ioun Stone ends while it's orbiting your head, the stone falls as though you had dropped it."
+				"Roughly marble sized, Ioun Stones are named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun Stones exist, each type a distinct combination of shape and color.",
+				"When you take a Magic|XPHB action to toss an Ioun Stone into the air, the stone orbits your head at a distance of 1d3 feet, conferring its benefit to you while doing so. You can have up to three Ioun Stones orbiting your head at the same time.",
+				"Each Ioun Stone orbiting your head is considered to be an object you are wearing. The orbiting stone avoids contact with other creatures and objects, adjusting its orbit to avoid collisions and thwarting all attempts by other creatures to attack or snatch it.",
+				"As a Utilize|XPHB action, you can seize and stow any number of Ioun Stones orbiting your head. If your Attunement|XPHB to an Ioun Stone ends while it's orbiting your head, the stone falls as though you had dropped it."
 			]
 		},
 		{
@@ -5427,7 +5427,7 @@
 			"name": "Potion of Resistance",
 			"source": "XDMG",
 			"entriesTemplate": [
-				"When you drink this potion, you have {@variantrule Resistance|XPHB} to {{getFullImmRes item.resist}} damage for 1 hour."
+				"When you drink this potion, you have Resistance|XPHB to {{getFullImmRes item.resist}} damage for 1 hour."
 			]
 		},
 		{
@@ -5441,15 +5441,15 @@
 			"name": "Ring of Resistance",
 			"source": "XDMG",
 			"entriesTemplate": [
-				"You have {@variantrule Resistance|XPHB} to {{getFullImmRes item.resist}} damage while wearing this ring. The ring is set with {{item.detail1}}."
+				"You have Resistance|XPHB to {{getFullImmRes item.resist}} damage while wearing this ring. The ring is set with {{item.detail1}}."
 			]
 		},
 		{
 			"name": "Scroll of Protection",
 			"source": "XDMG",
 			"entriesTemplate": [
-				"Using a {@action Magic|XPHB} action to read the scroll creates a 5-foot {@variantrule Emanation [Area of Effect]|XPHB|Emanation} originating from you. For 5 minutes, {{item.detail2}} can't enter or affect anything in the area. However, if you move in such a way that an {{item.detail1}} would be inside the area, the effect ends.",
-				"As a {@action Magic|XPHB} action, a creature within 5 feet of the {@variantrule Emanation [Area of Effect]|XPHB|Emanation} can attempt to overcome it, which forces the creature to make a DC 15 Charisma saving throw. On a successful save, the creature ceases to be affected by the {@variantrule Emanation [Area of Effect]|XPHB|Emanation}."
+				"Using a Magic|XPHB action to read the scroll creates a 5-foot Emanation [Area of Effect]|XPHB|Emanation originating from you. For 5 minutes, {{item.detail2}} can't enter or affect anything in the area. However, if you move in such a way that an {{item.detail1}} would be inside the area, the effect ends.",
+				"As a Magic|XPHB action, a creature within 5 feet of the Emanation [Area of Effect]|XPHB|Emanation can attempt to overcome it, which forces the creature to make a DC 15 Charisma saving throw. On a successful save, the creature ceases to be affected by the Emanation [Area of Effect]|XPHB|Emanation."
 			]
 		}
 	],
@@ -5478,7 +5478,7 @@
 			"page": 214,
 			"freeRules2024": true,
 			"entries": [
-				"When you make the extra attack of the Light property, you can make it as part of the {@action Attack|XPHB} action instead of as a {@variantrule Bonus Action|XPHB}. You can make this extra attack only once per turn."
+				"When you make the extra attack of the Light property, you can make it as part of the Attack|XPHB action instead of as a Bonus Action|XPHB. You can make this extra attack only once per turn."
 			]
 		},
 		{
@@ -5496,7 +5496,7 @@
 			"page": 214,
 			"freeRules2024": true,
 			"entries": [
-				"If you hit a creature with this weapon, that creature has {@variantrule Disadvantage|XPHB} on its next attack roll before the start of your next turn."
+				"If you hit a creature with this weapon, that creature has Disadvantage|XPHB on its next attack roll before the start of your next turn."
 			]
 		},
 		{
@@ -5505,7 +5505,7 @@
 			"page": 214,
 			"freeRules2024": true,
 			"entries": [
-				"If you hit a creature with this weapon and deal damage to it, you can reduce its {@variantrule Speed|XPHB} by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the {@variantrule Speed|XPHB} reduction doesn't exceed 10 feet."
+				"If you hit a creature with this weapon and deal damage to it, you can reduce its Speed|XPHB by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed|XPHB reduction doesn't exceed 10 feet."
 			]
 		},
 		{
@@ -5514,7 +5514,7 @@
 			"page": 214,
 			"freeRules2024": true,
 			"entries": [
-				"If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw ({@dc 8} plus the ability modifier used to make the attack roll and your {@variantrule Proficiency|XPHB} Bonus). On a failed save, the creature has the {@condition Prone|XPHB} condition."
+				"If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (8 plus the ability modifier used to make the attack roll and your Proficiency|XPHB Bonus). On a failed save, the creature has the Prone|XPHB condition."
 			]
 		},
 		{
@@ -5523,7 +5523,7 @@
 			"page": 214,
 			"freeRules2024": true,
 			"entries": [
-				"If you hit a creature with this weapon and deal damage to the creature, you have {@variantrule Advantage|XPHB} on your next attack roll against that creature before the end of your next turn."
+				"If you hit a creature with this weapon and deal damage to the creature, you have Advantage|XPHB on your next attack roll against that creature before the end of your next turn."
 			]
 		}
 	]

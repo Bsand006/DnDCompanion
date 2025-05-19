@@ -58,14 +58,12 @@
         }
       ],
       "startingProficiencies": {
-        "armor": [
-          "light",
-          "medium",
-          "shield"
-        ],
-        "weapons": [
-          "simple",
-          "martial"
+        "equipment": [
+          "light armor",
+          "medium armor",
+          "shields",
+          "simple weapons",
+          "martial weapons"
         ],
         "skills": [
           {
@@ -88,10 +86,10 @@
       "startingEquipment": {
         "additionalFromBackground": true,
         "default": [
-          "(a) phb or (b) phb",
-          "(a) two phb or (b) two items",
-          "(a) a phb or (b) an phb",
-          "A phb and a phb of phb"
+          "(a) scale mail or (b) leather armor",
+          "(a) two shortswords or (b) two simple weapons",
+          "(a) a dungeoneers pack or (b) an explorers pack",
+          "A longbow  and a quiver of 20 arrows"
         ],
         "goldAlternative": "5d4 \u00d7 10",
         "defaultData": [
