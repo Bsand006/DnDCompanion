@@ -18,6 +18,12 @@
         "number": 1,
         "faces": 10
       },
+      "subclassFeaturesAt": [
+        3,
+        7,
+        11,
+        15
+      ],
       "proficiency": [
         "str",
         "dex"
@@ -1725,7 +1731,7 @@
       ]
     },
     {
-      "name": "Ranger Archetype",
+      "name": "Ranger Archetype(subclass)",
       "source": "PHB",
       "page": 89,
       "srd": true,

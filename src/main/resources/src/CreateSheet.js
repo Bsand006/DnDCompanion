@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { rollStats as RollStats } from './dice/RollStats';
 import { rollHP } from './dice/RollHP';
-import { getClass, getRaces, getRace, submitCharacter, getBaseWeapons, getBaseArmor } from './services/apiService';
+import { getClass, getRaces, getRace, submitCharacter, getBaseWeapons, getSubclassFeatures } from './services/apiService';
 import './CreateSheet.css';
 import './CreateSheet2.css';
 import './CreateSheet3.css';
@@ -38,12 +38,16 @@ function CreateSheet() {
 	const [selectedRaceDetails, setSelectedRaceDetails] = useState([]);
 	const [Class, setClass] = useState('Artificer');
 	const [subclass, setSubclass] = useState('');
+	const [subclassFeaturesAt, setSubclassFeaturesAt] = useState([]);
+	const [subclassFeatures, setSubclassFeatures] = useState([]);
 	const [level, setLevel] = useState(1);
 	const [abilities, setAbilities] = useState([]);
 	const [selectedChoices, setSelectedChoices] = useState([]);
 	const [equipmentProficiencies, setEquipmentProficiencies] = useState([]);
+	const [weaponProficiency, setWeaponProficiency] = useState('simple');
 	const [startingEquipment, setStartingEquipment] = useState([]);
-	const [startingWeaponOptions, setStartingWeaponOptions] = useState([]);
+	const [simpleWeapons, setSimpleWeapons] = useState([]);
+	const [martialWeapons, setMartialWeapons] = useState([]);
 	const [selectedEquipment, setSelectedEquipment] = useState([]);
 	const [equipment, setEquipment] = useState([])
 	const [AC, setAC] = useState(0);
@@ -69,27 +73,26 @@ function CreateSheet() {
 
 	useEffect(() => {
 		if (stage === 4) {
-			let weaponProf = 'simple weapons';
-
-			for (let i = 0; i < equipmentProficiencies.length; i++) {
-				if (equipmentProficiencies[i] === 'martial weapons') {
-					weaponProf = 'martial weapons';
-					break;
-				}
-			}
-			getWeapons(weaponProf); // Get weapons based on proficiency
+			getWeapons();
 		}
-	}, [stage, equipmentProficiencies]);
+	}, [stage]);
 
-	const getWeapons = async (category) => {
+	useEffect(() => {
+		if (subclass) {
+			getSubclassFeature();
+		}
+	}, [subclass]);
 
-		const response = await getBaseWeapons(category);
+	const getWeapons = async () => {
 
-		console.log('Weapons:', response.weapons);
+		const response = await getBaseWeapons('simple weapons');
 
-		setStartingWeaponOptions(response.weapons);
+		setSimpleWeapons(response.weapons);
 
-		console.log('Starting Weapon Options:', startingWeaponOptions);
+		const response2 = await getBaseWeapons('martial weapons');
+
+		setMartialWeapons(response2.weapons);
+
 	}
 
 	const handleEquipmentChange = (isChecked, equipment, counterpart) => { // Handles equipment selection in starting equipment menu
@@ -208,6 +211,8 @@ function CreateSheet() {
 			setEquipmentProficiencies(response.class[0].startingProficiencies.equipment);
 			console.log('Equipment Proficiencies:', response.class[0].startingProficiencies.equipment);
 
+			setSubclassFeaturesAt(response.class[0].subclassFeaturesAt);
+
 			setStartingEquipment(response.class[0].startingEquipment.default);
 			console.log('Starting Equipment:', response.class[0].startingEquipment.default);
 
@@ -233,6 +238,31 @@ function CreateSheet() {
 		} catch (error) {
 			console.error('Error fetching class abilities:', error);
 		}
+	}
+
+	const getSubclassFeature = async () => { // Get subclass features
+		try {
+			
+			const response = await getSubclassFeatures(Class, subclass);
+			
+			console.log(response); 
+			
+			for (let i of subclassFeaturesAt) {
+                for (let j of response.subclassFeature) {
+					if (j.level === i) {
+						setSubclassFeatures((prev) => [...prev, {
+							name: j.name,
+							level: j.level,
+                            description: j.entries,
+                        }]);
+					}
+				}
+            }
+
+		} catch (error) {
+			console.error(error)
+		}
+
 	}
 
 	const calculateHP = (level, hitDie, constitution) => {
@@ -761,7 +791,10 @@ function CreateSheet() {
 						Choose Starting Equipment:
 						{startingEquipment.map((equipment, index) => (
 							<div key={index} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-								{equipment.toLowerCase().includes('any') ? (
+
+
+								{equipment.toLowerCase().includes('any')
+									|| equipment.toLowerCase().includes('a martial') ? (
 									<div>
 										<input
 											type="checkbox"
@@ -777,9 +810,19 @@ function CreateSheet() {
 											onChange={(e) => handleEquipmentChange(true, e.target.value, null)}
 										>
 											<option value="" disabled>Select an option</option>
-											{startingWeaponOptions.map((option, optionIndex) => (
-												<option key={optionIndex} value={option.name}>{option.name}</option>
-											))}
+											{equipment.toLowerCase().includes('martial') ? (
+												martialWeapons.map((weapon, i) => (
+													<option key={i} value={weapon.name}>
+														{weapon.name}
+													</option>
+												))
+											) : (
+												simpleWeapons.map((weapon, i) => (
+													<option key={i} value={weapon.name}>
+														{weapon.name}
+													</option>
+												))
+											)}
 										</select>
 									</div>
 								) : (

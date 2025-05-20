@@ -18,6 +18,12 @@
 				"number": 1,
 				"faces": 8
 			},
+			"subclassFeaturesAt": [
+                3,
+                6,
+                11,
+                17
+            ],
 			"proficiency": [
 				"str",
 				"dex"
@@ -1783,7 +1789,7 @@
 			]
 		},
 		{
-			"name": "Monastic Tradition",
+			"name": "Monastic Tradition(subclass)",
 			"source": "PHB",
 			"page": 76,
 			"srd": true,

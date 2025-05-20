@@ -18,6 +18,12 @@
         "number": 1,
         "faces": 10
       },
+      "subclassFeaturesAt": [
+        3,
+        7,
+        15,
+        20
+      ],
       "proficiency": [
         "wis",
         "cha"
@@ -1710,7 +1716,7 @@
       ]
     },
     {
-      "name": "Sacred Oath",
+      "name": "Sacred Oath(subclass)",
       "source": "PHB",
       "page": 82,
       "srd": true,

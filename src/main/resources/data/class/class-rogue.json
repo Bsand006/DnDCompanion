@@ -19,6 +19,12 @@
         "number": 1,
         "faces": 8
       },
+      "subclassFeaturesAt": [
+            3,
+            9,
+            13,
+            17
+            ],
       "proficiency": [
         "dex",
         "int"
@@ -2085,7 +2091,7 @@
       ]
     },
     {
-      "name": "Roguish Archetype",
+      "name": "Roguish Archetype(subclass)",
       "source": "PHB",
       "page": 94,
       "srd": true,

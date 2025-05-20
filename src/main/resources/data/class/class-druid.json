@@ -19,6 +19,13 @@
 				"number": 1,
 				"faces": 8
 			},
+			"subclassFeaturesAt": [
+                2,
+                3,
+                6,
+                10,
+                14
+            ],
 			"proficiency": [
 				"int",
 				"wis"
@@ -2011,7 +2018,7 @@
 			]
 		},
 		{
-			"name": "Druid Circle",
+			"name": "Druid Circle(subclass)",
 			"source": "PHB",
 			"page": 64,
 			"srd": true,

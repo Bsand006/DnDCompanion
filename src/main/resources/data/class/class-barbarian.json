@@ -22,6 +22,12 @@
 				"str",
 				"con"
 			],
+			"subclassFeaturesAt": [
+                3,
+                6,
+                10,
+                14
+            ],
 			"startingProficiencies": {
 				"equipment": [
 					"light",
@@ -1234,7 +1240,7 @@
 			]
 		},
 		{
-			"name": "Primal Path",
+			"name": "Primal Path(subclass)",
 			"source": "PHB",
 			"page": 46,
 			"srd": true,

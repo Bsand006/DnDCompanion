@@ -22,6 +22,11 @@
 				"dex",
 				"cha"
 			],
+			"subclassFeaturesAt": [
+                3,
+                6,
+                14
+            ],
 			"spellcastingAbility": "cha",
 			"casterProgression": "full",
 			"cantripProgression": [
@@ -2029,7 +2034,7 @@
 			]
 		},
 		{
-			"name": "Bard College",
+			"name": "Bard College(subclass)",
 			"source": "PHB",
 			"page": 51,
 			"srd": true,

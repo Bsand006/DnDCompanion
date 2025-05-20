@@ -19,6 +19,13 @@
         "number": 1,
         "faces": 10
       },
+      "subclassFeaturesAt": [
+      		3,
+      		7,
+      		10,
+      		15,
+      		18
+      ],
       "proficiency": [
         "str",
         "con"
@@ -1893,7 +1900,7 @@
       ]
     },
     {
-      "name": "Martial Archetype",
+      "name": "Martial Archetype(subclass)",
       "source": "PHB",
       "page": 72,
       "srd": true,

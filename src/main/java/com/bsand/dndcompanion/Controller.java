@@ -48,6 +48,12 @@ public class Controller {
 		GetClassInfo getClassInfo = new GetClassInfo();
 		return getClassInfo.getClass(className, level);
 	}
+	
+	@GetMapping("api/subclass")
+	public Map<String, Object> getSubClassInfo(@RequestParam String className, @RequestParam String subclass) {
+		GetClassInfo getClassInfo = new GetClassInfo();
+		return getClassInfo.getSubclassFeatures(className, subclass);
+	}
 
 	@GetMapping("/api/races")
 	public Map<String, Object> getRaceInfo(@RequestParam List<String> sourcelist) {

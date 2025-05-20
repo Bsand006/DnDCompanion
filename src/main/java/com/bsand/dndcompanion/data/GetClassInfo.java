@@ -58,4 +58,42 @@ public class GetClassInfo {
 
 		return null;
 	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> getSubclassFeatures(String className, String subclass) {
+
+		String subclassName = subclass.split(" ", 2)[0]; // Get the first word of the subclass name
+
+		File file = new File("src/main/resources/data/class/class-" + className.toLowerCase() + ".json");
+
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		Map<String, Object> subclassMap = new HashMap<String, Object>();
+
+		List<Map<String, Object>> featuresList = new ArrayList<>();
+
+		try {
+			JsonNode root = objectMapper.readTree(file);
+			ArrayNode subclassArray = (ArrayNode) root.get("subclassFeature");
+
+			for (JsonNode feature : subclassArray) {
+				if (!feature.get("source").asText().equals("XPHB")
+						&& !feature.get("classSource").asText().equals("XPHB")) {
+					if (feature.get("subclassShortName").asText().contains(subclassName)
+							&& !feature.has("isClassFeatureVariant")) {
+						featuresList.add(objectMapper.convertValue(feature, Map.class));
+					}
+				}
+			}
+
+			subclassMap.put("subclassFeature", featuresList);
+
+			return subclassMap;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 }

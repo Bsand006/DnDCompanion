@@ -19,6 +19,12 @@
 				"number": 1,
 				"faces": 6
 			},
+			"subclassFeaturesAt": [
+                3,
+                6,
+                14,
+                18
+            ],
 			"proficiency": [
 				"con",
 				"cha"
@@ -2219,7 +2225,7 @@
 	],
 	"classFeature": [
 		{
-			"name": "Sorcerous Origin",
+			"name": "Sorcerous Origin(subclass)",
 			"source": "PHB",
 			"page": 99,
 			"srd": true,

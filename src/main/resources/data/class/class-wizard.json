@@ -20,6 +20,12 @@
         "number": 1,
         "faces": 6
       },
+      "subclassFeaturesAt": [
+        2,
+        6,
+        10,
+        14
+      ],
       "proficiency": [
         "int",
         "wis"
@@ -1852,7 +1858,7 @@
                   ]
     },
     {
-      "name": "Arcane Tradition",
+      "name": "Arcane Tradition(subclass)",
       "source": "PHB",
       "page": 112,
       "srd": true,

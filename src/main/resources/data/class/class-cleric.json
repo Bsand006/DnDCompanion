@@ -24,6 +24,13 @@
 				"wis",
 				"cha"
 			],
+			"subclassFeaturesAt": [
+                1,
+                2,
+                6,
+                8,
+                17
+            ],
 			"spellcastingAbility": "wis",
 			"casterProgression": "full",
 			"preparedSpells": "<$level$> + <$wis_mod$>",
@@ -3267,7 +3274,7 @@
 	],
 	"classFeature": [
 		{
-			"name": "Divine Domain",
+			"name": "Divine Domain(subclass)",
 			"source": "PHB",
 			"page": 56,
 			"srd": true,

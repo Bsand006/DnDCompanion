@@ -56,10 +56,10 @@ export const getRace = async (raceName, source) => {
 	}
 }
 
-export const getSubclass = async (className, level, subclass) => {
+export const getSubclassFeatures = async (className, subclass) => {
 	try {
 		const response = await axios.get(`${API_URL}/subclass`, {
-			params: { className, level, subclass },
+			params: { className, subclass },
 			withCredentials: true,
 		});
 		return response.data;
