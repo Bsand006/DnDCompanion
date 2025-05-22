@@ -79,6 +79,7 @@ function CreateSheet() {
 
 	useEffect(() => {
 		if (subclass) {
+			setSubclassFeatures([]); // Clear previous subclass features
 			getSubclassFeature();
 		}
 	}, [subclass]);
@@ -242,22 +243,25 @@ function CreateSheet() {
 
 	const getSubclassFeature = async () => { // Get subclass features
 		try {
-			
+
 			const response = await getSubclassFeatures(Class, subclass);
-			
-			console.log(response); 
-			
-			for (let i of subclassFeaturesAt) {
-                for (let j of response.subclassFeature) {
-					if (j.level === i) {
+
+			console.log(response);
+
+			for (let i of response.subclassFeature) {
+				for (let j of subclassFeaturesAt) {
+					console.log(j)
+					if (i.level === j) {
 						setSubclassFeatures((prev) => [...prev, {
-							name: j.name,
-							level: j.level,
-                            description: j.entries,
-                        }]);
+							name: i.name,
+							level: i.level,
+							description: i.entries,
+						}]);
 					}
 				}
-            }
+			}
+
+			console.log('Subclass Features:', subclassFeatures);
 
 		} catch (error) {
 			console.error(error)
