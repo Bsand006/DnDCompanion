@@ -10,7 +10,11 @@ import './CreateSheet4.css';
 import './CreateSheet5.css';
 
 function CreateSheet() {
-
+	
+	/*
+		Constants
+	*/    
+	
 	const navigate = useNavigate();
 
 	const [stage, setStage] = useState(1);
@@ -49,8 +53,12 @@ function CreateSheet() {
 	const [simpleWeapons, setSimpleWeapons] = useState([]);
 	const [martialWeapons, setMartialWeapons] = useState([]);
 	const [selectedEquipment, setSelectedEquipment] = useState([]);
-	const [equipment, setEquipment] = useState([])
+	const [equipment, setEquipment] = useState([]);
 	const [AC, setAC] = useState(0);
+
+	/*
+		UseEffect Hooks
+	*/
 
 	useEffect(() => { // Asynchronously fetch races when the stage first changes to 1
 		if (stage === 1) {
@@ -71,21 +79,25 @@ function CreateSheet() {
 		}
 	}, [stage, Class, level]);
 
-	useEffect(() => {
+	useEffect(() => { // Asynchronously fetch weapons at stage 4
 		if (stage === 4) {
 			getWeapons();
 		}
 	}, [stage]);
 
-	useEffect(() => {
+	useEffect(() => { // Asynchronously fetch subclass when the subclass is selected
 		getSubclassFeature();
 	}, [subclass]);
-	
-	useEffect(() => {
-	    if (subclassFeatures.length > 0) {
-	        console.log('Subclass Features:', subclassFeatures);
-	    }
+
+	useEffect(() => { // Asynchronously fetch subclass features when the subclass features are updated
+		if (subclassFeatures.length > 0) {
+			console.log('Subclass Features:', subclassFeatures);
+		}
 	}, [subclassFeatures]);
+	
+	/*
+		Functions to set data and handle change events
+	*/
 
 	const getWeapons = async () => {
 
@@ -256,7 +268,7 @@ function CreateSheet() {
 				level: feature.level,
 				description: feature.description,
 			}));
-			
+
 			setSubclassFeatures(features);
 
 		} catch (error) {
@@ -375,6 +387,10 @@ function CreateSheet() {
 
 		};
 	}
+	
+	/*
+		Rendering functions
+	*/
 
 	const renderStatOption = () => {
 

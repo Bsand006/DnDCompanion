@@ -6,6 +6,7 @@ target/
 .mvn/
 .settings/
 node_modules/
+src/main/recources/.env
 
 ### STS ###
 .apt_generated
@@ -34,3 +35,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/.apt_generated_tests/
