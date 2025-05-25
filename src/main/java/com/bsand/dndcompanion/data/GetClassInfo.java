@@ -61,9 +61,7 @@ public class GetClassInfo {
 
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> getSubclassFeatures(String className, String subclass) {
-
-		String subclassName = subclass.split(" ", 2)[0]; // Get the first word of the subclass name
-
+		
 		File file = new File("src/main/resources/data/class/class-" + className.toLowerCase() + ".json");
 
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -79,7 +77,7 @@ public class GetClassInfo {
 			for (JsonNode feature : subclassArray) {
 				if (!feature.get("source").asText().equals("XPHB")
 						&& !feature.get("classSource").asText().equals("XPHB")) {
-					if (feature.get("subclassShortName").asText().contains(subclassName)
+					if (subclass.contains(feature.get("subclassShortName").asText())
 							&& !feature.has("isClassFeatureVariant")) {
 						featuresList.add(objectMapper.convertValue(feature, Map.class));
 					}

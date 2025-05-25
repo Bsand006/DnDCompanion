@@ -78,11 +78,14 @@ function CreateSheet() {
 	}, [stage]);
 
 	useEffect(() => {
-		if (subclass) {
-			setSubclassFeatures([]); // Clear previous subclass features
-			getSubclassFeature();
-		}
+		getSubclassFeature();
 	}, [subclass]);
+	
+	useEffect(() => {
+	    if (subclassFeatures.length > 0) {
+	        console.log('Subclass Features:', subclassFeatures);
+	    }
+	}, [subclassFeatures]);
 
 	const getWeapons = async () => {
 
@@ -243,25 +246,18 @@ function CreateSheet() {
 
 	const getSubclassFeature = async () => { // Get subclass features
 		try {
+			setSubclassFeatures([]); // Clear previous subclass features
 
 			const response = await getSubclassFeatures(Class, subclass);
 
-			console.log(response);
+			const features = response.subclassFeature.map((feature) => ({
 
-			for (let i of response.subclassFeature) {
-				for (let j of subclassFeaturesAt) {
-					console.log(j)
-					if (i.level === j) {
-						setSubclassFeatures((prev) => [...prev, {
-							name: i.name,
-							level: i.level,
-							description: i.entries,
-						}]);
-					}
-				}
-			}
-
-			console.log('Subclass Features:', subclassFeatures);
+				name: feature.name,
+				level: feature.level,
+				description: feature.description,
+			}));
+			
+			setSubclassFeatures(features);
 
 		} catch (error) {
 			console.error(error)
