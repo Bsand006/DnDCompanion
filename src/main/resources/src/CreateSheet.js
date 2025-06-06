@@ -360,12 +360,13 @@ function CreateSheet() {
 
 			setPoints(points - pointDiff);
 		} else if (statOption === 'rolled') { // rolled stats
+			
 			if (parsedValue === prevValue) return;
 
 			// Build the new stats object first
 			const newStats = {
 				...stats,
-				[stat]: parsedValue,
+				[stat]: parsedValue, 
 			};
 
 			// Calculate new available values for rolled stats
