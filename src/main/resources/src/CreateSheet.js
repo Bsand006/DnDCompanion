@@ -266,7 +266,7 @@ function CreateSheet() {
 
 				name: feature.name,
 				level: feature.level,
-				description: feature.description,
+				description: feature.entries,
 			}));
 
 			setSubclassFeatures(features);

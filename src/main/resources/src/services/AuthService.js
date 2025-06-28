@@ -22,7 +22,7 @@ export const login = async (username, password) => {
 
 export const signup = async (username, password) => {
 	try {
-		const response = await axios.post(`${API_URL}/register`, new URLSearchParams({ username, password }),
+		const response = await axios.post(`${API_URL}/register`, new URLSearchParams({ username, password}),
 			{ withCredentials: true }
 		)
 
@@ -49,5 +49,4 @@ export const fetchProtectedResource = async () => {
 	} catch (error) {
 		throw new Error('Access denied');
 	}
-
 }

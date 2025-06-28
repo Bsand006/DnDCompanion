@@ -3,6 +3,7 @@ package com.bsand.dndcompanion;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,9 +28,34 @@ import com.bsand.dndcompanion.data.ParseSpells;
 public class Controller {
 
 	private final CharacterService characterService;
+	private final UserService userService;
 
-	public Controller(CharacterService characterService) {
+	public Controller(CharacterService characterService, UserService userService) {
 		this.characterService = characterService;
+		this.userService = userService;
+	}
+
+	@PostMapping("/api/register")
+	public ResponseEntity<String> registerUser(@RequestParam String username, @RequestParam String password,
+			@RequestParam String confirmPassword) {
+
+		if (userService.isUsernameTaken(username)) { // Check if a username is already taken
+			return ResponseEntity.status(400).body("Username is already taken.");
+		}
+		
+		if (!password.equals(confirmPassword)) { // Check if the password and confirm password match
+			return ResponseEntity.status(400).body("Passwords do not match.");
+		}
+
+		// Attempt to register the new user
+
+		try {
+			userService.registerNewUser(username, password);
+			return ResponseEntity.ok("User registered successfully.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(500).body("An error occurred while registering the user.");
+		}
 	}
 
 	@GetMapping("/api/spells")
@@ -48,7 +74,7 @@ public class Controller {
 		GetClassInfo getClassInfo = new GetClassInfo();
 		return getClassInfo.getClass(className, level);
 	}
-	
+
 	@GetMapping("api/subclass")
 	public Map<String, Object> getSubClassInfo(@RequestParam String className, @RequestParam String subclass) {
 		GetClassInfo getClassInfo = new GetClassInfo();

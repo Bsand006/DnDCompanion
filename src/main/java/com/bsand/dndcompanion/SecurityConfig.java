@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -40,7 +42,7 @@ public class SecurityConfig {
 
 	private final UserService userService;
 
-	public SecurityConfig(UserService userService) {
+	public SecurityConfig(@Lazy UserService userService) {
 		this.userService = userService;
 	}
 
@@ -86,6 +88,11 @@ public class SecurityConfig {
 		contextSource.setBase(ldapBase);
 		contextSource.setPooled(false);
 		return contextSource;
+	}
+	
+	@Bean 
+	public LdapTemplate ldapTemplate() {
+	    return new LdapTemplate(contextSource());
 	}
 
 	@Bean
