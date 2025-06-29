@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './SpellBook.css'
+import './css/SpellBook.css'
 import { getSpells } from './services/apiService';
 
 // This function is used to display the spell description in a collapsible format
@@ -91,7 +91,7 @@ function SpellLookupBook() {
 											)}</td>
 
 											<td>{spell.range && spell.range.distance
-												? spell.range.distance.type == 'feet'
+												? spell.range.distance.type === 'feet'
 													? `${spell.range.distance.amount} ${spell.range.distance.type}`
 													: spell.range.distance.type
 												: 'N/A'}</td>

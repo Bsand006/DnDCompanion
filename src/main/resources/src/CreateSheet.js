@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { rollStats as RollStats } from './dice/RollStats';
 import { rollHP } from './dice/RollHP';
 import { getClass, getRaces, getRace, submitCharacter, getBaseWeapons, getSubclassFeatures } from './services/apiService';
-import './CreateSheet.css';
-import './CreateSheet2.css';
-import './CreateSheet3.css';
-import './CreateSheet4.css';
-import './CreateSheet5.css';
+import './css/CreateSheet.css';
+import './css/CreateSheet2.css';
+import './css/CreateSheet3.css';
+import './css/CreateSheet4.css';
+import './css/CreateSheet5.css';
 
 function CreateSheet() {
 	
