@@ -1,9 +1,10 @@
 .CreateSheet {
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-	height: 100vh;
+	flex-direction: row; 
+	align-items: flex-start;  
+	background-color: rgb(28, 113, 216); 
+	padding: 20px;
+	gap: 20px; 
 }
 
 .CreateSheet-header {
@@ -16,47 +17,17 @@
 	color: black;
 }
 
+.stage {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
 .CreateSheet-body {
     background-color: rgb(28, 113, 216); 
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-}
-
-.CreateSheet-sidebar {
-	width: 250px;
-	padding: 20px;
-	background-color: #f0f0f0;
-	border-right: 1px solid #ccc;
-}
-
-.inputs-column {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-}
-
-.scrollable-abilities {
-	max-height: 200vh; 
-	overflow-y: auto;
-	padding-right: 10px; 
-}
-
-.race-details-container {
-	margin-left: 20px;
-	margin-right: 300px;
-	height: 200vh;
-	margin-top: 150px;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-}
-
-button {
-	padding: 10px 20px;
-	font-size: 16px;
-	cursor: pointer;
 }

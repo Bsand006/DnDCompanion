@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Home';
-import Login from './Login';
-import Signup from './Signup';
-import App from './App';
-import Compendium from './Compendium';
-import SpellLookupBook from './SpellLookupBook';
-import CreateSheet from './CreateSheet';
+import Home from './components/Home';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import App from './components/App';
+import Compendium from './components/Compendium';
+import SpellLookupBook from './components/SpellLookupBook';
+import CreateSheet from '/components./CreateSheet';
 
 
 function AppRouter() {

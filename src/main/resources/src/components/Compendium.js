@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import './css/Compendium.css';
+import '../css/Compendium.css';
 
 function Compendium() {
 

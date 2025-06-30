@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { signup } from './services/AuthService';
+import { signup } from '../services/AuthService';
 import { useNavigate } from 'react-router-dom';
-import './css/Signup.css'
+import '../css/Signup.css'
 
 /*
 	Function component to handle user registrations.

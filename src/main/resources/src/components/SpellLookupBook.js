@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './css/SpellBook.css'
-import { getSpells } from './services/apiService';
+import '../css/SpellBook.css'
+import { getSpells } from '../services/apiService';
 
 // This function is used to display the spell description in a collapsible format
 
