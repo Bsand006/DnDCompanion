@@ -6,7 +6,7 @@ import Signup from './components/Signup';
 import App from './components/App';
 import Compendium from './components/Compendium';
 import SpellLookupBook from './components/SpellLookupBook';
-import CreateSheet from '/components./CreateSheet';
+import CreateSheet from './components/createSheet/';
 
 
 function AppRouter() {
